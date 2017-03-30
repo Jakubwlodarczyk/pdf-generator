@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <style>{{css}}</style>
+</head>
+
+<body>
+    <div id="left-column">
+        <div id="left-column-top">
+            <div id="avatar" style="background-image: url('{{profilePicture}}')"></div>
+            <p id="name">{{personalInfo.firstName}} {{personalInfo.lastName}}</p>
+            <p id="date-of-birth">{{personalInfo.birthDate}}</p>
+        </div>
+        <div id="left-column-middle">
+            <h2>Self definition</h2>
+            <p id="self-definition">{{selfDefinition}}</p>
+            <h2>Mentors opinion</h2>
+            <p id="mentor-opinion">{{mentorOpinions.0.opinion}}</p>
+            <p id="mentor-name">&#8212;&nbsp;{{mentorOpinions.0.mentorSignature}}, Mentor</p>
+        </div>
+        <div id="left-column-bottom">
+            <h2>Contact</h2>
+                <p id="phone">
+                    <span>
+                        <i class="fa fa-phone fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.phoneNumber}}
+                    </span>
+                </p>
+                <p id="email" class="{{#show.emailLong}}long-email{{/show.emailLong}}">
+                    <a href="mailto:{{email}}?cc={{mentorEmail}}">
+                        <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.email}}
+                    </a>
+                </p>
+                <p id="linkedin">
+                    <a href="#">
+                        <i class="fa fa-linkedin fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.firstName}} {{personalInfo.lastName}}
+                    </a>
+                </p>
+                <p id="github">
+                    <a href="#">
+                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;{{github.short}}
+                    </a>
+                </p>
+        </div>
+    </div>
+    <div id="right-column">
+        <h2>Skills</h2>
+        <table id="skills" cellpadding=0 cellspacing=0>
+            <tr>
+                <td>
+                    <p>Hard</p>
+                    <ul>
+                        {{#hardSkills}}
+                        <li>{{name}}</li>
+                        {{/hardSkills}}
+                        <li>Git Version Control</li>
+                    </ul>
+                </td>
+                <td class="divider"></td>
+                <td>
+                    <p>Soft</p>
+                    <ul>
+                        {{#softSkills}}
+                        <li>{{name}}</li>
+                        {{/softSkills}}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <p>{{skills.text}}</p>
+        <h2>Main interests</h2>
+        <p>{{mainInterests}}</p>
+
+        <h2>Recent Projects</h2>
+        <ul id="projects">
+                <li>
+                    <p>{{projectContributions.0.projectName}}</p>
+                    <small>{{projectContributions.0.projectDescription}}</small>
+                </li>
+                <li>
+                    <p>{{projectContributions.1.projectName}}</p>
+                    <small>{{projectContributions.1.projectDescription}}</small>
+                </li>
+        </ul>
+
+        <h2>Education</h2>
+        <ul>
+            <li>Codecool <small>(since April, 2016)</small></li>
+            {{#educations}}
+                <li>{{instituteName}}</li>
+            {{/educations}}
+        </ul>
+
+        <h2>Certificates</h2>
+        <ul>
+            {{#certificates}}
+                <li>{{text}}</li>
+            {{/certificates}}
+        </ul>
+
+        <h2>Peer recommendations</h2>
+        <p><span id="peer-recommendation-quote"><i class="fa fa-quote-right fa-3x fa-pull-left" aria-hidden="true"></i></span> {{peerRecommendations.0.recommendation}}</p>
+        <p id="peer-name">&#8212;&nbsp;{{peerRecommendations.0.peerSignature}}, Teammate</p>
+
+        <p><span id="peer-recommendation-quote"><i class="fa fa-quote-right fa-3x fa-pull-left" aria-hidden="true"></i></span> {{peerRecommendations.1.recommendation}}</p>
+        <p id="peer-name">&#8212;&nbsp;{{peerRecommendations.1.peerSignature}}, Teammate</p>
+
+
+        <div id="codecool-logo"></div>
+    </div>
+</body>
+
+</html>

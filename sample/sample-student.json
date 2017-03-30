@@ -1,0 +1,202 @@
+{
+  "certificates": [
+    {
+      "text": "Space Sciences - Astronomy: Observational Astronomy"
+    },
+    {
+      "text": "Anthropology - Cultural Anthropology: Anthropology Of Religion"
+    }
+  ],
+  "courseId": "BP.2017.1",
+  "developerPreludes": [
+    {
+      "text": "php"
+    },
+    {
+      "text": "mysql"
+    },
+    {
+      "text": "java"
+    },
+    {
+      "text": "xml"
+    }
+  ],
+  "educations": [
+    {
+      "instituteName": "Andrassy Gyula Muszaki Kozepiskola",
+      "titleOfQualification": "Info",
+      "started": "1999-01-01",
+      "finished": "2001-01-01",
+      "ongoing": 0,
+      "academicDegree": 0
+    },
+    {
+      "instituteName": "Nyiregyhazi Foiskola",
+      "titleOfQualification": "InfoKvt",
+      "started": "2005-01-01",
+      "finished": "2006-01-01",
+      "ongoing": 1,
+      "academicDegree": 1
+    }
+  ],
+  "freeTextSkill": "I have such amazing skills you cant even imagine",
+  "id": 9999,
+  "location": {
+    "country": "Hungary",
+    "city": "Miskolc",
+    "street": "Dorottya utca 1.",
+    "zip": "3534"
+  },
+  "mainInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis efficitur risus, a commodo metus interdum vulputate. Quisque vel sodales arcu. Mauris velit risus, blandit sed blandit in, suscipit fringilla leo. Donec justo magna, cursus non condimentum ac, sodales vel justo. Sed a facilisis odio, ac finibus lectus. Curabitur turpis lectus, vestibulum nec ex ut, feugiat imperdiet dui. Sed pellentesque nulla in lectus congue porttitor. Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam.",
+  "mentorOpinions": [
+    {
+      "opinion": "This is an actual opinion, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis efficitur risus, a commodo metus interdum vulputate.",
+      "mentorSignature": "Sandor Szodoray"
+    },
+    {
+      "opinion": "Another freetext.",
+      "mentorSignature": "Miki"
+    }
+  ],
+  "peerRecommendations": [
+    {
+      "recommendation": "I have to admit he is a tough, smart person. Formidable by any standard! He would have won throwing a soccer ball. He is my friend and a total winner!",
+      "peerSignature": "Donald Trump"
+    },
+    {
+      "recommendation": "She is extremely powerful, very strong and vicious. I’d let her handle it. Serioously, writing code is peanuts for her, nothing more!",
+      "peerSignature": "Barack Obama"
+    }
+  ],
+  "personalInfo": {
+    "firstName": "Snoop",
+    "lastName": "Dogg",
+    "birthDate": "1987-07-06",
+    "gender": "MALE",
+    "email": "csaba.bekes@fakeuser.com",
+    "phoneNumber": "+36201234567"
+  },
+  "profilePicture": "http://gazettereview.com/wp-content/uploads/2017/01/snoop-dogg.jpg",
+  "projectContributions": [
+    {
+      "projectName": "Ivory Silver Planet Indigo Firecracker",
+      "projectDescription": "A C# project with lots of fine stuff like this and that, really cool indeed",
+      "projectRepositoryUrl": "http://github.com/mentorbot",
+      "teamMates": [
+        10,
+        20,
+        30
+      ]
+    },
+    {
+      "projectName": "Itchy Scoreboard Minimum Blue Torpedo",
+      "projectDescription": "Amazing app with unwanted side-effects which are useless in general but still exists",
+      "projectRepositoryUrl": "http://github.com/mentorbot",
+      "teamMates": [
+        10,
+        20,
+        30
+      ]
+    }
+  ],
+  "selfDefinition": "I am a lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis efficitur risus, a commodo metus interdum vulputate. Quisque vel sodales arcu. Mauris velit risus, blandit sed blandit in, suscipit fringilla leo. Donec justo magna, cursus non condimentum ac, sodales vel justo. Sed a facilisis odio, ac finibus lectus. Curabitur turpis lectus, vestibulum nec ex ut, feugiat imperdiet dui. Sed pellentesque nulla in lectus congue porttitor. Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam.",
+  "skillSet": [
+    {
+      "name": "Technical aptitude",
+      "type": "HARD",
+      "masteryLevel": "BASIC",
+      "description": "Awesome Desc 1"
+    },
+    {
+      "name": "Business management skills",
+      "type": "HARD",
+      "masteryLevel": "BASIC",
+      "description": "Awesome Desc 1"
+    },
+    {
+      "name": "Good negotiation skills",
+      "type": "HARD",
+      "masteryLevel": "BASIC",
+      "description": "Awesome Desc 1"
+    },
+    {
+      "name": "Ability to motivate and lead",
+      "type": "SOFT",
+      "masteryLevel": "INTERMEDIATE",
+      "description": "Awesome Desc 2"
+    },
+    {
+      "name": "Good concentration and mental stamina",
+      "type": "SOFT",
+      "masteryLevel": "INTERMEDIATE",
+      "description": "Awesome Desc 2"
+    },
+    {
+      "name": "Patience and professionalism",
+      "type": "SOFT",
+      "masteryLevel": "INTERMEDIATE",
+      "description": "Awesome Desc 2"
+    },{
+      "name": "Ability to take responsibiliy for the safety of others",
+      "type": "SOFT",
+      "masteryLevel": "INTERMEDIATE",
+      "description": "Awesome Desc 2"
+    },
+    {
+      "name": "Good time management skills",
+      "type": "SOFT",
+      "masteryLevel": "INTERMEDIATE",
+      "description": "Awesome Desc 2"
+    }
+  ],
+  "socialNetworks": [
+    {
+      "title": "Facebook",
+      "url": "http://facebook.com/bekescsaba"
+    },
+    {
+      "title": "LinkedIn",
+      "url": "http://linkedin.com/bekescsaba"
+    }
+  ],
+  "spokenLanguages": [
+    {
+      "languageName": "HUNGARIAN",
+      "level": "NATIVE"
+    },
+    {
+      "languageName": "ENGLISH",
+      "level": "LOW_INTERMEDIATE"
+    },
+    {
+      "languageName": "POLISH",
+      "level": "HIGH_INTERMEDIATE"
+    },
+    {
+      "languageName": "GERMAN",
+      "level": "ADVANCED"
+    },
+    {
+      "languageName": "FRENCH",
+      "level": "ELEMENTARY"
+    }
+  ],
+  "willingToWorkElsewhere": 1,
+  "workExperiences": [
+    {
+      "employer": "Codecool",
+      "jobTitle": "Dev",
+      "started": "1999-01-01",
+      "finished": "2000-12-31",
+      "ongoing": 1
+    },
+    {
+      "employer": "Evilcompany",
+      "jobTitle": "Malevil",
+      "started": "1970-05-11",
+      "finished": "210-09-10",
+      "ongoing": 0
+    }
+  ]
+}
