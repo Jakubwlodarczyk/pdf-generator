@@ -30,8 +30,20 @@ Alternatively:
 
 ## Deployment
 
-Ideally, it is recommended to run this project on an AWS EC2 instance, configured with AWS Elastic Beanstalk.
-To make things simple, head over to this [Amazon Documentation on how to install the EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html?icmpid=docs_elasticbeanstalk_console).
-It is recommended to familiarize yourself with the [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) as well.
+Ideally, it is recommended deploy this application with AWS Elastic Beanstalk in it's own **Application**, and in it's own **Environment**.
 
+To start off, familiarize yourself with the [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) and set up a profile (profile data is being stored at ~/.aws)
+Pay attention to [named profiles](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-multiple-profiles) in case you're using multiple AWS accounts!
 
+- When AWS CLI is installed, verify it by running `aws --version`
+
+To make things simple with AWS Elastic Beanstalk, you're going to need a CLI tool for that. Head over to this [Amazon Documentation on how to install the EB CLI](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html?icmpid=docs_elasticbeanstalk_console).
+
+- When EB CLI is installed, verify it by running `eb --version`
+
+### Here comes the fun part:
+
+- `eb init --profile your_profile_name` to start the interacive setup process. Select **eu-central-1** and then select **student-profile-pdf-generator**.
+- `eb list` if you want, these are the environments inside the *student-profile-pdf-generator* Application.
+- `eb deploy` to deploy your application (there is no need to build and mess around with docker images here, Amazon will build it on their own).
+- `eb console` which will open environment's Console in a new browser window.
