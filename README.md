@@ -47,3 +47,7 @@ To make things simple with AWS Elastic Beanstalk, you're going to need the **[EB
 - `eb list` list the environments inside *student-profile-pdf-generator* Application.
 - `eb deploy` to deploy your application (there is no need to build/save/zip containers and all the like, EB CLI will take care of it).
 - `eb console` which will open environment's Console in a new browser window.
+- `curl -X POST http://pdf-generator-production.eu-central-1.elasticbeanstalk.com/ -d @sample/sample-student.json --header "Content-Type: application/json" > eb-generated.pdf`
+
+Alternatively:
+- you can run `./curl-elastic-beanstalk.sh` to speed things up
