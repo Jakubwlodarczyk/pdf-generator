@@ -9,11 +9,29 @@ var css = fs.readFileSync(templateDir + 'template.css', 'utf-8');
 var app = express();
 app.use(bodyParser.json());
 
+// needed for CORS requests.
+// if the requesting party has defined settings, use those,
+// otherwise allow all
+app.use(function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', req.get('Origin') || '*');
+	res.header('Access-Control-Allow-Credentials', 'true');
+	res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+	res.header('Access-Control-Expose-Headers', 'Content-Length');
+	res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
+	if (req.method === 'OPTIONS') {
+		return res.sendStatus(200);
+	} else {
+		return next();
+	}
+});
+
 app.post('/', function(req, res) {
 	var student = req.body;
 	student.css = css;
-    student.hardSkills = extractSkillsByType('HARD', student.skillSet);
+
+	student.hardSkills = extractSkillsByType('HARD', student.skillSet);
     student.softSkills = extractSkillsByType('SOFT', student.skillSet);
+
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
 	
@@ -30,12 +48,15 @@ app.post('/', function(req, res) {
 
 var extractSkillsByType = function (type, skills) {
     var result = [];
-    for (i = 0; i < skills.length; i++) {
-        if (skills[i].type == type) {
+    if(skills === undefined){
+    	return result;
+	}
+    for (var i = 0; i < skills.length; i++) {
+        if (skills[i].type === type) {
             result.push(skills[i]);
         }
     }
     return result;
-}
+};
 
 app.listen(8080);
