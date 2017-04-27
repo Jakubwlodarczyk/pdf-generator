@@ -31,18 +31,18 @@
                     </span>
                 </p>
                 <p id="email" class="{{#show.emailLong}}long-email{{/show.emailLong}}">
-                    <a href="mailto:{{email}}?cc={{mentorEmail}}">
+                    <a href="mailto:{{personalInfo.email}}">
                         <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.email}}
                     </a>
                 </p>
                 <p id="linkedin">
-                    <a href="#">
+                    <a href="{{linkedInUrl}}">
                         <i class="fa fa-linkedin fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.firstName}} {{personalInfo.lastName}}
                     </a>
                 </p>
                 <p id="github">
-                    <a href="#">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;{{github.short}}
+                    <a href="{{gitHubUrl}}">
+                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;{{gitHubShort}}
                     </a>
                 </p>
         </div>
@@ -57,7 +57,6 @@
                         {{#hardSkills}}
                         <li>{{name}}</li>
                         {{/hardSkills}}
-                        <li>Git Version Control</li>
                     </ul>
                 </td>
                 <td class="divider"></td>
@@ -71,7 +70,7 @@
                 </td>
             </tr>
         </table>
-        <p>{{skills.text}}</p>
+        <p>{{freeTextSkill}}</p>
         <h2>Main interests</h2>
         <p>{{mainInterests}}</p>
 
@@ -85,11 +84,15 @@
                     <p>{{projectContributions.1.projectName}}</p>
                     <small>{{projectContributions.1.projectDescription}}</small>
                 </li>
+				<li>
+                    <p>{{projectContributions.2.projectName}}</p>
+                    <small>{{projectContributions.2.projectDescription}}</small>
+                </li>
         </ul>
 
         <h2>Education</h2>
         <ul>
-            <li>Codecool <small>(since April, 2016)</small></li>
+			<li>Codecool</li>
             {{#educations}}
                 <li>{{instituteName}}</li>
             {{/educations}}

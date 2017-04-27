@@ -31,6 +31,11 @@ app.post('/', function(req, res) {
 
 	student.hardSkills = extractSkillsByType('HARD', student.skillSet);
     student.softSkills = extractSkillsByType('SOFT', student.skillSet);
+	
+	student.gitHubUrl = extractGitHubUrl(student.socialNetworks);
+	student.gitHubShort = extractGitHubShort(student.socialNetworks);
+	
+	student.linkedInUrl = extractLinkedInUrl(student.socialNetworks);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -58,5 +63,41 @@ var extractSkillsByType = function (type, skills) {
     }
     return result;
 };
+
+var extractGitHubUrl = function (socialNetworks) {
+	var result = "#";
+	for (var i = 0; i < socialNetworks.length; i++) {
+		if (socialNetworks[i].title == "GITHUB") {
+			result = socialNetworks[i].url;
+		}
+	}
+	return result;
+}
+
+var extractLinkedInUrl = function (socialNetworks) {
+	var result = "#";
+	for (var i = 0; i < socialNetworks.length; i++) {
+		if (socialNetworks[i].title == "LINKEDIN") {
+			result = socialNetworks[i].url;
+		} 
+	}
+	return result;
+}
+
+var extractGitHubShort = function (socialNetworks) {
+	var result = "";
+	for (var i = 0; i < socialNetworks.length; i++) {
+		if (socialNetworks[i].title == "GITHUB") {
+			var url = socialNetworks[i].url;
+			var chopped = url.split("/");
+			if (chopped[chopped.length - 1] == "") {
+				result = chopped[chopped.length - 2];
+			} else {
+				result = chopped[chopped.length - 1];
+			}
+		}
+	}
+	return result;
+}
 
 app.listen(8080);
