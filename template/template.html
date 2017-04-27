@@ -71,7 +71,7 @@
                 </td>
             </tr>
         </table>
-        <p>{{skills.text}}</p>
+        <p>{{freeTextSkill}}</p>
         <h2>Main interests</h2>
         <p>{{mainInterests}}</p>
 
@@ -85,11 +85,15 @@
                     <p>{{projectContributions.1.projectName}}</p>
                     <small>{{projectContributions.1.projectDescription}}</small>
                 </li>
+				<li>
+                    <p>{{projectContributions.2.projectName}}</p>
+                    <small>{{projectContributions.2.projectDescription}}</small>
+                </li>
         </ul>
 
         <h2>Education</h2>
         <ul>
-            <li>Codecool <small>(since April, 2016)</small></li>
+			<li>Codecool</li>
             {{#educations}}
                 <li>{{instituteName}}</li>
             {{/educations}}

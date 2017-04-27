@@ -40,7 +40,7 @@
       "academicDegree": 1
     }
   ],
-  "freeTextSkill": "I have such amazing skills you cant even imagine",
+  "freeTextSkill": "Has experience in WebStorm, this and that. Also good at using Linux systems for development. Good team player, good people skills.",
   "id": 9999,
   "location": {
     "country": "Hungary",
@@ -48,7 +48,7 @@
     "street": "Dorottya utca 1.",
     "zip": "3534"
   },
-  "mainInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis efficitur risus, a commodo metus interdum vulputate. Quisque vel sodales arcu. Mauris velit risus, blandit sed blandit in, suscipit fringilla leo. Donec justo magna, cursus non condimentum ac, sodales vel justo. Sed a facilisis odio, ac finibus lectus. Curabitur turpis lectus, vestibulum nec ex ut, feugiat imperdiet dui. Sed pellentesque nulla in lectus congue porttitor. Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam.",
+  "mainInterests": "Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam. And some more text hey  thats good! Okay.",
   "mentorOpinions": [
     {
       "opinion": "This is an actual opinion, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis efficitur risus, a commodo metus interdum vulputate.",
@@ -82,7 +82,7 @@
     {
       "projectName": "Ivory Silver Planet Indigo Firecracker",
       "projectDescription": "A C# project with lots of fine stuff like this and that, really cool indeed",
-      "projectRepositoryUrl": "http://github.com/mentorbot",
+      "projectRepositoryUrl": "http://github.com/mentorbot1",
       "teamMates": [
         10,
         20,
@@ -92,7 +92,17 @@
     {
       "projectName": "Itchy Scoreboard Minimum Blue Torpedo",
       "projectDescription": "Amazing app with unwanted side-effects which are useless in general but still exists",
-      "projectRepositoryUrl": "http://github.com/mentorbot",
+      "projectRepositoryUrl": "http://github.com/mentorbot2",
+      "teamMates": [
+        10,
+        20,
+        30
+      ]
+    },
+	  {
+      "projectName": "Indiegogo Cash Collector",
+      "projectDescription": "Some nice project where this guy showed off what he can do",
+      "projectRepositoryUrl": "http://github.com/mentorbot3",
       "teamMates": [
         10,
         20,
@@ -100,7 +110,7 @@
       ]
     }
   ],
-  "selfDefinition": "I am a lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis efficitur risus, a commodo metus interdum vulputate. Quisque vel sodales arcu. Mauris velit risus, blandit sed blandit in, suscipit fringilla leo. Donec justo magna, cursus non condimentum ac, sodales vel justo. Sed a facilisis odio, ac finibus lectus. Curabitur turpis lectus, vestibulum nec ex ut, feugiat imperdiet dui. Sed pellentesque nulla in lectus congue porttitor. Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam.",
+  "selfDefinition": "Mauris lobortis efficitur risus, a commodo metus interdum vulputate. Quisque vel sodales arcu. Mauris velit risus, blandit sed blandit in, suscipit fringilla leo. Donec justo magna, cursus non condimentum ac, sodales vel justo. Sed a facilisis odio, ac finibus lectus. Curabitur turpis lectus, vestibulum nec ex ut, feugiat imperdiet dui. Sed pellentesque nulla in lectus congue porttitor. Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam.",
   "skillSet": [
     {
       "name": "Technical aptitude",
@@ -109,13 +119,13 @@
       "description": "Awesome Desc 1"
     },
     {
-      "name": "Business management skills",
+      "name": "Business management",
       "type": "HARD",
       "masteryLevel": "BASIC",
       "description": "Awesome Desc 1"
     },
     {
-      "name": "Good negotiation skills",
+      "name": "Negotiation skills",
       "type": "HARD",
       "masteryLevel": "BASIC",
       "description": "Awesome Desc 1"
