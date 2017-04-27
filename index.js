@@ -34,6 +34,8 @@ app.post('/', function(req, res) {
 	
 	student.gitHubUrl = extractGitHubUrl(student.socialNetworks);
 	student.gitHubShort = extractGitHubShort(student.socialNetworks);
+	
+	student.linkedInUrl = extractLinkedInUrl(student.socialNetworks);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -74,12 +76,24 @@ var extractGitHubUrl = function (socialNetworks) {
 	return result;
 }
 
+var extractLinkedInUrl = function (socialNetworks) {
+	var result = "";
+	for (var i = 0; i < socialNetworks.length; i++) {
+		console.log("####", socialNetworks[i].title)
+		if (socialNetworks[i].title == "LINKEDIN") {
+			result = socialNetworks[i].url;
+		} else {
+			result = "???";
+		}
+	}
+	return result;
+}
+
 var extractGitHubShort = function (socialNetworks) {
 	var result = "";
 	for (var i = 0; i < socialNetworks.length; i++) {
 		if (socialNetworks[i].title == "GITHUB") {
 			var url = socialNetworks[i].url;
-			console.log("-----> ", url);
 			var chopped = url.split("/");
 			if (chopped[chopped.length - 1] == "") {
 				result = chopped[chopped.length - 2];
