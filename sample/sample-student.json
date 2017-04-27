@@ -75,7 +75,7 @@
     "birthDate": "1987-07-06",
     "gender": "MALE",
     "email": "csaba.bekes@fakeuser.com",
-    "phoneNumber": "+36201234567"
+    "phoneNumber": "+36201112233"
   },
   "profilePicture": "http://gazettereview.com/wp-content/uploads/2017/01/snoop-dogg.jpg",
   "projectContributions": [
@@ -162,12 +162,16 @@
   ],
   "socialNetworks": [
     {
-      "title": "Facebook",
-      "url": "http://facebook.com/bekescsaba"
+      "title": "FACEBOOK",
+      "url": "http://facebook.com/"
     },
     {
-      "title": "LinkedIn",
-      "url": "http://linkedin.com/bekescsaba"
+      "title": "LINKEDIN",
+      "url": "http://startlap.hu/"
+    },
+	{
+      "title": "GITHUB",
+      "url": "http://github.com/vajni"
     }
   ],
   "spokenLanguages": [
