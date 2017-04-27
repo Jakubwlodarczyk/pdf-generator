@@ -31,7 +31,7 @@
                     </span>
                 </p>
                 <p id="email" class="{{#show.emailLong}}long-email{{/show.emailLong}}">
-                    <a href="mailto:{{email}}?cc={{mentorEmail}}">
+                    <a href="mailto:{{personalInfo.email}}">
                         <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.email}}
                     </a>
                 </p>
@@ -57,7 +57,6 @@
                         {{#hardSkills}}
                         <li>{{name}}</li>
                         {{/hardSkills}}
-                        <li>Git Version Control</li>
                     </ul>
                 </td>
                 <td class="divider"></td>

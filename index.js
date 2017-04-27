@@ -65,26 +65,21 @@ var extractSkillsByType = function (type, skills) {
 };
 
 var extractGitHubUrl = function (socialNetworks) {
-	var result = "";
+	var result = "#";
 	for (var i = 0; i < socialNetworks.length; i++) {
 		if (socialNetworks[i].title == "GITHUB") {
 			result = socialNetworks[i].url;
-		} else {
-			result = "#";
 		}
 	}
 	return result;
 }
 
 var extractLinkedInUrl = function (socialNetworks) {
-	var result = "";
+	var result = "#";
 	for (var i = 0; i < socialNetworks.length; i++) {
-		console.log("####", socialNetworks[i].title)
 		if (socialNetworks[i].title == "LINKEDIN") {
 			result = socialNetworks[i].url;
-		} else {
-			result = "???";
-		}
+		} 
 	}
 	return result;
 }
