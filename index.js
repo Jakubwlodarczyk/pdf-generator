@@ -9,10 +9,11 @@ var css = fs.readFileSync(templateDir + 'template.css', 'utf-8');
 var app = express();
 app.use(bodyParser.json());
 
-// needed for CORS requests.
-// if the requesting party has defined settings, use those,
-// otherwise allow all
+/** CORS CONFIGURATION */
 app.use(function(req, res, next) {
+
+	// if the requesting party has defined settings, use those,
+	// otherwise allow all
 	res.header('Access-Control-Allow-Origin', req.get('Origin') || '*');
 	res.header('Access-Control-Allow-Credentials', 'true');
 	res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
@@ -26,16 +27,15 @@ app.use(function(req, res, next) {
 });
 
 app.post('/', function(req, res) {
+
 	var student = req.body;
 	student.css = css;
 
 	student.hardSkills = extractSkillsByType('HARD', student.skillSet);
     student.softSkills = extractSkillsByType('SOFT', student.skillSet);
-	
-	student.gitHubUrl = extractGitHubUrl(student.socialNetworks);
-	student.gitHubShort = extractGitHubShort(student.socialNetworks);
-	
-	student.linkedInUrl = extractLinkedInUrl(student.socialNetworks);
+
+    student.gitHub = createGitHubDataObject(student);
+	student.linkedIn = createLinkedInDataObject(student);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -51,6 +51,13 @@ app.post('/', function(req, res) {
 	});
 });
 
+/**
+ * Extract skills from the set, by type:
+ * HARD / SOFT.
+ * @param type
+ * @param skills
+ * @returns {Array}
+ */
 var extractSkillsByType = function (type, skills) {
     var result = [];
     if(skills === undefined){
@@ -64,40 +71,83 @@ var extractSkillsByType = function (type, skills) {
     return result;
 };
 
+/**
+ * Extract GitHub URL by key from the socialnetwork data.
+ * @param socialNetworks
+ * @returns '#' - to act as href value or the url itself.
+ */
 var extractGitHubUrl = function (socialNetworks) {
 	var result = "#";
 	for (var i = 0; i < socialNetworks.length; i++) {
-		if (socialNetworks[i].title == "GITHUB") {
+		if (socialNetworks[i].title === "GITHUB") {
 			result = socialNetworks[i].url;
 		}
 	}
 	return result;
-}
+};
 
+/**
+ * Extract LinkedIn URL by key from the socialnetwork data.
+ * @param socialNetworks
+ * @returns '#' - to act as href value or the url itself.
+ */
 var extractLinkedInUrl = function (socialNetworks) {
 	var result = "#";
 	for (var i = 0; i < socialNetworks.length; i++) {
-		if (socialNetworks[i].title == "LINKEDIN") {
+		if (socialNetworks[i].title === "LINKEDIN") {
 			result = socialNetworks[i].url;
-		} 
-	}
-	return result;
-}
-
-var extractGitHubShort = function (socialNetworks) {
-	var result = "";
-	for (var i = 0; i < socialNetworks.length; i++) {
-		if (socialNetworks[i].title == "GITHUB") {
-			var url = socialNetworks[i].url;
-			var chopped = url.split("/");
-			if (chopped[chopped.length - 1] == "") {
-				result = chopped[chopped.length - 2];
-			} else {
-				result = chopped[chopped.length - 1];
-			}
 		}
 	}
 	return result;
-}
+};
+
+/**
+ * Extract the short part (after the / ) from a GitHub link.
+ * @param url
+ * @returns {*}
+ */
+var extractGitHubShort = function (url) {
+	var chopped = url.split("/");
+	if (chopped[chopped.length - 1] === "") {
+		return result = chopped[chopped.length - 2];
+	}
+	return result = chopped[chopped.length - 1];
+};
+
+/**
+ * Creates GitHub content holder object, or returns undefined
+ * if no GitHub url was provided. Needed to be able to hide the
+ * section with Mustache if missing.
+ * @param student
+ * @returns {*}
+ */
+var createGitHubDataObject = function(student){
+	var url = extractGitHubUrl(student.socialNetworks);
+	if(url !== '#'){
+		return {
+			url: url,
+			short: extractGitHubShort(url)
+		};
+	}
+	return undefined;
+};
+
+/**
+ * Creates LinkedIn content holder object, or returns undefined
+ * if no LinkedIn url was provided. Needed to be able to hide the
+ * section with Mustache if missing.
+ * @param student
+ * @returns {*}
+ */
+var createLinkedInDataObject = function(student){
+	var url = extractLinkedInUrl(student.socialNetworks);
+	if(url !== '#'){
+		return {
+			url: url,
+			name: student.personalInfo.firstName + ' ' + student.personalInfo.lastName
+		};
+	}
+	return undefined;
+};
 
 app.listen(8080);

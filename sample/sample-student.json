@@ -1,179 +1,18 @@
 {
-  "certificates": [
-    {
-      "text": "Space Sciences - Astronomy: Observational Astronomy"
-    },
-    {
-      "text": "Anthropology - Cultural Anthropology: Anthropology Of Religion"
-    }
-  ],
-  "courseId": "BP.2017.1",
-  "developerPreludes": [
-    {
-      "text": "php"
-    },
-    {
-      "text": "mysql"
-    },
-    {
-      "text": "java"
-    },
-    {
-      "text": "xml"
-    }
-  ],
-  "educations": [
-    {
-      "instituteName": "Andrassy Gyula Muszaki Kozepiskola",
-      "titleOfQualification": "Info",
-      "started": "1999-01-01",
-      "finished": "2001-01-01",
-      "ongoing": 0,
-      "academicDegree": 0
-    },
-    {
-      "instituteName": "Nyiregyhazi Foiskola",
-      "titleOfQualification": "InfoKvt",
-      "started": "2005-01-01",
-      "finished": "2006-01-01",
-      "ongoing": 1,
-      "academicDegree": 1
-    }
-  ],
-  "freeTextSkill": "Has experience in WebStorm, this and that. Also good at using Linux systems for development. Good team player, good people skills.",
-  "id": 9999,
+  "personalInfo": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "1987-02-18",
+    "gender": "MALE",
+    "email": "email@comeshere.com",
+    "phoneNumber": "+36201234567"
+  },
   "location": {
     "country": "Hungary",
-    "city": "Miskolc",
-    "street": "Dorottya utca 1.",
-    "zip": "3534"
+    "city": "Budapest",
+    "street": null,
+    "zip": null
   },
-  "mainInterests": "Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam. And some more text hey  thats good! Okay.",
-  "mentorOpinions": [
-    {
-      "opinion": "This is an actual opinion, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis efficitur risus, a commodo metus interdum vulputate.",
-      "mentorSignature": "Sandor Szodoray"
-    },
-    {
-      "opinion": "Another freetext.",
-      "mentorSignature": "Miki"
-    }
-  ],
-  "peerRecommendations": [
-    {
-      "recommendation": "I have to admit he is a tough, smart person. Formidable by any standard! He would have won throwing a soccer ball. He is my friend and a total winner!",
-      "peerSignature": "Donald Trump"
-    },
-    {
-      "recommendation": "She is extremely powerful, very strong and vicious. I’d let her handle it. Serioously, writing code is peanuts for her, nothing more!",
-      "peerSignature": "Barack Obama"
-    }
-  ],
-  "personalInfo": {
-    "firstName": "Snoop",
-    "lastName": "Dogg",
-    "birthDate": "1987-07-06",
-    "gender": "MALE",
-    "email": "csaba.bekes@fakeuser.com",
-    "phoneNumber": "+36201112233"
-  },
-  "profilePicture": "http://gazettereview.com/wp-content/uploads/2017/01/snoop-dogg.jpg",
-  "projectContributions": [
-    {
-      "projectName": "Ivory Silver Planet Indigo Firecracker",
-      "projectDescription": "A C# project with lots of fine stuff like this and that, really cool indeed",
-      "projectRepositoryUrl": "http://github.com/mentorbot1",
-      "teamMates": [
-        10,
-        20,
-        30
-      ]
-    },
-    {
-      "projectName": "Itchy Scoreboard Minimum Blue Torpedo",
-      "projectDescription": "Amazing app with unwanted side-effects which are useless in general but still exists",
-      "projectRepositoryUrl": "http://github.com/mentorbot2",
-      "teamMates": [
-        10,
-        20,
-        30
-      ]
-    },
-	  {
-      "projectName": "Indiegogo Cash Collector",
-      "projectDescription": "Some nice project where this guy showed off what he can do",
-      "projectRepositoryUrl": "http://github.com/mentorbot3",
-      "teamMates": [
-        10,
-        20,
-        30
-      ]
-    }
-  ],
-  "selfDefinition": "Mauris lobortis efficitur risus, a commodo metus interdum vulputate. Quisque vel sodales arcu. Mauris velit risus, blandit sed blandit in, suscipit fringilla leo. Donec justo magna, cursus non condimentum ac, sodales vel justo. Sed a facilisis odio, ac finibus lectus. Curabitur turpis lectus, vestibulum nec ex ut, feugiat imperdiet dui. Sed pellentesque nulla in lectus congue porttitor. Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam.",
-  "skillSet": [
-    {
-      "name": "Technical aptitude",
-      "type": "HARD",
-      "masteryLevel": "BASIC",
-      "description": "Awesome Desc 1"
-    },
-    {
-      "name": "Business management",
-      "type": "HARD",
-      "masteryLevel": "BASIC",
-      "description": "Awesome Desc 1"
-    },
-    {
-      "name": "Negotiation skills",
-      "type": "HARD",
-      "masteryLevel": "BASIC",
-      "description": "Awesome Desc 1"
-    },
-    {
-      "name": "Ability to motivate and lead",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
-    },
-    {
-      "name": "Good concentration and mental stamina",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
-    },
-    {
-      "name": "Patience and professionalism",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
-    },{
-      "name": "Ability to take responsibiliy for the safety of others",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
-    },
-    {
-      "name": "Good time management skills",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
-    }
-  ],
-  "socialNetworks": [
-    {
-      "title": "FACEBOOK",
-      "url": "http://facebook.com/"
-    },
-    {
-      "title": "LINKEDIN",
-      "url": "http://startlap.hu/"
-    },
-	{
-      "title": "GITHUB",
-      "url": "http://github.com/vajni"
-    }
-  ],
   "spokenLanguages": [
     {
       "languageName": "HUNGARIAN",
@@ -181,36 +20,158 @@
     },
     {
       "languageName": "ENGLISH",
-      "level": "LOW_INTERMEDIATE"
-    },
-    {
-      "languageName": "POLISH",
-      "level": "HIGH_INTERMEDIATE"
-    },
-    {
-      "languageName": "GERMAN",
       "level": "ADVANCED"
     },
     {
-      "languageName": "FRENCH",
-      "level": "ELEMENTARY"
+      "languageName": "GERMAN",
+      "level": "LOW_INTERMEDIATE"
     }
   ],
-  "willingToWorkElsewhere": 1,
-  "workExperiences": [
+  "mentorOpinions": [
     {
-      "employer": "Codecool",
-      "jobTitle": "Dev",
-      "started": "1999-01-01",
-      "finished": "2000-12-31",
-      "ongoing": 1
+      "opinion": "Peti is a big fan of languages. Not just programming languages, but foreign languages as well. I believe that's why he could learn so much in a year. Fast learner, likes conventions (over configuration :-)).",
+      "mentorSignature": "Tamás Tompa"
+    }
+  ],
+  "peerRecommendations": [
+    {
+      "recommendation": "Peter has a good sense of humour and he is very educated. He is a great teammate whose honest and constructive feedbacks I always found very useful.",
+      "peerSignature": "Krisztina Baranyai"
+    }
+  ],
+  "educations": [
+    {
+      "instituteName": "Eötvös Loránd University",
+      "titleOfQualification": "BA in Eastern Languages and Cultures (Mongolian & Korean Studies)",
+      "started": null,
+      "finished": null,
+      "ongoing": false,
+      "academicDegree": null
     },
     {
-      "employer": "Evilcompany",
-      "jobTitle": "Malevil",
-      "started": "1970-05-11",
-      "finished": "210-09-10",
-      "ongoing": 0
+      "instituteName": "National University of Mongolia",
+      "titleOfQualification": "Scholarship Programme for Foreign Students",
+      "started": null,
+      "finished": null,
+      "ongoing": false,
+      "academicDegree": false
+    },
+    {
+      "instituteName": "LIA Iskola",
+      "titleOfQualification": "Protocol Assistant",
+      "started": null,
+      "finished": null,
+      "ongoing": false,
+      "academicDegree": null
     }
-  ]
+  ],
+  "certificates": [
+    {
+      "text": "driving licence (category 'B')"
+    }
+  ],
+  "workExperiences": [
+    {
+      "employer": "Nemzeti Művelődési Intézet",
+      "jobTitle": "Administrative Assistant",
+      "started": null,
+      "finished": null,
+      "ongoing": false
+    }
+  ],
+  "projectContributions": [
+    {
+      "projectName": "Volunti",
+      "projectRepositoryUrl": "https://github.com/CodecoolBP20161/advanced-module-volunti",
+      "projectDescription": "A platform to connect volunteers and organisations.",
+      "teamMates": null
+    },
+    {
+      "projectName": "Microservices for the Codecool Shop practice project",
+      "projectRepositoryUrl": "https://github.com/CodecoolBP20161/from-python-to-java-microservices-peti_balazs_jani_kriszta",
+      "projectDescription": "A cross-webshop review management system.",
+      "teamMates": null
+    }
+  ],
+  "developerPreludes": [],
+  "skillSet": [
+    {
+      "name": "Java",
+      "type": "HARD",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "Python",
+      "type": "HARD",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "HTML/CSS",
+      "type": "HARD",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "Java EE",
+      "type": "HARD",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "GIT",
+      "type": "HARD",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "Unit Testing",
+      "type": "SOFT",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "Clean Code",
+      "type": "SOFT",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "Teamwork",
+      "type": "SOFT",
+      "masteryLevel": "EXPERT",
+      "description": null
+    },
+    {
+      "name": "Assertive Communication",
+      "type": "SOFT",
+      "masteryLevel": "EXPERT",
+      "description": null
+    },
+    {
+      "name": "Helpfulness",
+      "type": "SOFT",
+      "masteryLevel": "EXPERT",
+      "description": null
+    }
+  ],
+  "socialNetworks": [
+    {
+      "title": "LINKEDIN",
+      "url": "https://www.linkedin.com/in/peterpomsar"
+    },
+    {
+      "title": "GITHUB",
+      "url": "https://github.com/ppayter-cc"
+    }
+  ],
+  "id": 154,
+  "courseId": "BP.2016.1",
+  "profilePicture": "http://profile.code.cool.s3.eu-central-1.amazonaws.com/profile_pictures/154.jpg?1494332729578",
+  "selfDefinition": "Curious, thirsty for knowledge and always eager to improve or learn something new. Culture enthusiast, lover of literature, deeply interested in science, technology and languages.",
+  "willingToWorkElsewhere": false,
+  "preferredItSector": null,
+  "freeTextSkill": "Has experience with IntelliJ, JUnit, Maven, RDBMS, SQL, ORMs, Networking, HTTP, Rest APIs, Heroku.",
+  "mainInterests": "Programming is an awesome way to help people, solve challenging problems and create something new and useful. I prefer the full-stack approach: in order to achieve the best possible solution, one has to understand the whole project from the database through the back-end logic to the UI. Going down this road I would love to master new technologies, learn mobile development and deepen my knowledge in software architecture and UX design."
 }
