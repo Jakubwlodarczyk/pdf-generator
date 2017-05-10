@@ -1,6 +1,8 @@
 # Excluding Node modules
 node_modules/
 
+.idea
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

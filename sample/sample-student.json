@@ -1,216 +1,109 @@
 {
-  "certificates": [
+  "personalInfo": {
+    "firstName": "Johnatan",
+    "lastName": "Doey",
+    "birthDate": "1987-12-31",
+    "gender": "FEMALE",
+    "email": "csaba.bekes@fakeuser.com",
+    "phoneNumber": "36201234511"
+  },
+  "location": {
+    "country": "Poland",
+    "city": "Krakow",
+    "street": "Regiposta Street 1.",
+    "zip": "3525"
+  },
+  "spokenLanguages": [
     {
-      "text": "Space Sciences - Astronomy: Observational Astronomy"
-    },
-    {
-      "text": "Anthropology - Cultural Anthropology: Anthropology Of Religion"
+      "languageName": "HUNGARIAN",
+      "level": "NATIVE"
     }
   ],
-  "courseId": "BP.2017.1",
+  "mentorOpinions": [
+    {
+      "opinion": "This kis is going places. I don't know where, but places.",
+      "mentorSignature": "Mentor Miki"
+    }
+  ],
+  "peerRecommendations": [
+    {
+      "recommendation": "A fantastic teammate, I would never ever grab a kebab without him! His programming skills are awesome as hell too.",
+      "peerSignature": "Douche Bigalow"
+    }
+  ],
+  "educations": [],
+  "certificates": [],
+  "workExperiences": [
+    {
+      "employer": "Vodafone Zrt.",
+      "jobTitle": "Operator",
+      "started": "946684800000",
+      "finished": "1104537600000",
+      "onGoing": false
+    }
+  ],
+  "projectContributions": [],
   "developerPreludes": [
     {
       "text": "php"
     },
     {
-      "text": "mysql"
+      "text": "git"
     },
     {
       "text": "java"
     },
     {
-      "text": "xml"
-    }
-  ],
-  "educations": [
-    {
-      "instituteName": "Andrassy Gyula Muszaki Kozepiskola",
-      "titleOfQualification": "Info",
-      "started": "1999-01-01",
-      "finished": "2001-01-01",
-      "ongoing": 0,
-      "academicDegree": 0
+      "text": "ruby"
     },
     {
-      "instituteName": "Nyiregyhazi Foiskola",
-      "titleOfQualification": "InfoKvt",
-      "started": "2005-01-01",
-      "finished": "2006-01-01",
-      "ongoing": 1,
-      "academicDegree": 1
+      "text": "women"
     }
   ],
-  "freeTextSkill": "Has experience in WebStorm, this and that. Also good at using Linux systems for development. Good team player, good people skills.",
-  "id": 9999,
-  "location": {
-    "country": "Hungary",
-    "city": "Miskolc",
-    "street": "Dorottya utca 1.",
-    "zip": "3534"
-  },
-  "mainInterests": "Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam. And some more text hey  thats good! Okay.",
-  "mentorOpinions": [
-    {
-      "opinion": "This is an actual opinion, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lobortis efficitur risus, a commodo metus interdum vulputate.",
-      "mentorSignature": "Sandor Szodoray"
-    },
-    {
-      "opinion": "Another freetext.",
-      "mentorSignature": "Miki"
-    }
-  ],
-  "peerRecommendations": [
-    {
-      "recommendation": "I have to admit he is a tough, smart person. Formidable by any standard! He would have won throwing a soccer ball. He is my friend and a total winner!",
-      "peerSignature": "Donald Trump"
-    },
-    {
-      "recommendation": "She is extremely powerful, very strong and vicious. I’d let her handle it. Serioously, writing code is peanuts for her, nothing more!",
-      "peerSignature": "Barack Obama"
-    }
-  ],
-  "personalInfo": {
-    "firstName": "Snoop",
-    "lastName": "Dogg",
-    "birthDate": "1987-07-06",
-    "gender": "MALE",
-    "email": "csaba.bekes@fakeuser.com",
-    "phoneNumber": "+36201112233"
-  },
-  "profilePicture": "http://gazettereview.com/wp-content/uploads/2017/01/snoop-dogg.jpg",
-  "projectContributions": [
-    {
-      "projectName": "Ivory Silver Planet Indigo Firecracker",
-      "projectDescription": "A C# project with lots of fine stuff like this and that, really cool indeed",
-      "projectRepositoryUrl": "http://github.com/mentorbot1",
-      "teamMates": [
-        10,
-        20,
-        30
-      ]
-    },
-    {
-      "projectName": "Itchy Scoreboard Minimum Blue Torpedo",
-      "projectDescription": "Amazing app with unwanted side-effects which are useless in general but still exists",
-      "projectRepositoryUrl": "http://github.com/mentorbot2",
-      "teamMates": [
-        10,
-        20,
-        30
-      ]
-    },
-	  {
-      "projectName": "Indiegogo Cash Collector",
-      "projectDescription": "Some nice project where this guy showed off what he can do",
-      "projectRepositoryUrl": "http://github.com/mentorbot3",
-      "teamMates": [
-        10,
-        20,
-        30
-      ]
-    }
-  ],
-  "selfDefinition": "Mauris lobortis efficitur risus, a commodo metus interdum vulputate. Quisque vel sodales arcu. Mauris velit risus, blandit sed blandit in, suscipit fringilla leo. Donec justo magna, cursus non condimentum ac, sodales vel justo. Sed a facilisis odio, ac finibus lectus. Curabitur turpis lectus, vestibulum nec ex ut, feugiat imperdiet dui. Sed pellentesque nulla in lectus congue porttitor. Morbi fermentum mi a neque consectetur, volutpat vulputate erat consectetur. Aenean tempus magna et lectus interdum, sed ullamcorper nisl imperdiet. Praesent et tortor diam.",
   "skillSet": [
     {
-      "name": "Technical aptitude",
+      "name": "ZsitHab Long string operation test Mastery",
       "type": "HARD",
       "masteryLevel": "BASIC",
-      "description": "Awesome Desc 1"
+      "description": "I am quite good in Zsit and ZsitHab"
     },
     {
-      "name": "Business management",
+      "name": "Pakker Cuccer",
       "type": "HARD",
       "masteryLevel": "BASIC",
-      "description": "Awesome Desc 1"
+      "description": "I rather not."
     },
     {
-      "name": "Negotiation skills",
+      "name": "Hardware Killing Withsomelongstring",
       "type": "HARD",
-      "masteryLevel": "BASIC",
-      "description": "Awesome Desc 1"
+      "masteryLevel": "EXPERT",
+      "description": "Quite nice skills I have"
     },
     {
-      "name": "Ability to motivate and lead",
+      "name": "People",
       "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
+      "masteryLevel": "EXPERT",
+      "description": "I tend to do well with people"
     },
     {
-      "name": "Good concentration and mental stamina",
+      "name": "Silky Smooth Soft Skill",
       "type": "SOFT",
       "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
-    },
-    {
-      "name": "Patience and professionalism",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
-    },{
-      "name": "Ability to take responsibiliy for the safety of others",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
-    },
-    {
-      "name": "Good time management skills",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": "Awesome Desc 2"
+      "description": ""
     }
   ],
   "socialNetworks": [
     {
-      "title": "FACEBOOK",
+      "title": "Facebook",
       "url": "http://facebook.com/"
-    },
-    {
-      "title": "LINKEDIN",
-      "url": "http://startlap.hu/"
-    },
-	{
-      "title": "GITHUB",
-      "url": "http://github.com/vajni"
     }
   ],
-  "spokenLanguages": [
-    {
-      "languageName": "HUNGARIAN",
-      "level": "NATIVE"
-    },
-    {
-      "languageName": "ENGLISH",
-      "level": "LOW_INTERMEDIATE"
-    },
-    {
-      "languageName": "POLISH",
-      "level": "HIGH_INTERMEDIATE"
-    },
-    {
-      "languageName": "GERMAN",
-      "level": "ADVANCED"
-    },
-    {
-      "languageName": "FRENCH",
-      "level": "ELEMENTARY"
-    }
-  ],
-  "willingToWorkElsewhere": 1,
-  "workExperiences": [
-    {
-      "employer": "Codecool",
-      "jobTitle": "Dev",
-      "started": "1999-01-01",
-      "finished": "2000-12-31",
-      "ongoing": 1
-    },
-    {
-      "employer": "Evilcompany",
-      "jobTitle": "Malevil",
-      "started": "1970-05-11",
-      "finished": "210-09-10",
-      "ongoing": 0
-    }
-  ]
+  "id": 1,
+  "courseId": "BP.2017.1",
+  "profilePicture": "https://student-profile.s3.eu-central-1.amazonaws.com/profile_pictures/1.jpg?1492632913293",
+  "selfDefinition": "I won't forget when Peter Pan came to my house, took my hand I said I was a boy; I'm glad he didn't check. \nI learned to fly, I learned to fight I lived a whole life in one night We saved each other's lives out on the pirate's deck. \nAnd I remember that night When I'm leaving a late night with some friends.",
+  "willingToWorkElsewhere": true,
+  "preferredItSector": null,
+  "freeTextSkill": "This is the freetext skill.",
+  "mainInterests": "I like messing with programming languages, like C# and Java. All I can tell is, garbage collection is the best thing since sliced bread."
 }
