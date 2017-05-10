@@ -1,109 +1,177 @@
 {
   "personalInfo": {
-    "firstName": "Johnatan",
-    "lastName": "Doey",
-    "birthDate": "1987-12-31",
-    "gender": "FEMALE",
-    "email": "csaba.bekes@fakeuser.com",
-    "phoneNumber": "36201234511"
+    "firstName": "John",
+    "lastName": "Doe",
+    "birthDate": "1987-02-18",
+    "gender": "MALE",
+    "email": "email@comeshere.com",
+    "phoneNumber": "+36201234567"
   },
   "location": {
-    "country": "Poland",
-    "city": "Krakow",
-    "street": "Regiposta Street 1.",
-    "zip": "3525"
+    "country": "Hungary",
+    "city": "Budapest",
+    "street": null,
+    "zip": null
   },
   "spokenLanguages": [
     {
       "languageName": "HUNGARIAN",
       "level": "NATIVE"
+    },
+    {
+      "languageName": "ENGLISH",
+      "level": "ADVANCED"
+    },
+    {
+      "languageName": "GERMAN",
+      "level": "LOW_INTERMEDIATE"
     }
   ],
   "mentorOpinions": [
     {
-      "opinion": "This kis is going places. I don't know where, but places.",
-      "mentorSignature": "Mentor Miki"
+      "opinion": "Peti is a big fan of languages. Not just programming languages, but foreign languages as well. I believe that's why he could learn so much in a year. Fast learner, likes conventions (over configuration :-)).",
+      "mentorSignature": "Tamás Tompa"
     }
   ],
   "peerRecommendations": [
     {
-      "recommendation": "A fantastic teammate, I would never ever grab a kebab without him! His programming skills are awesome as hell too.",
-      "peerSignature": "Douche Bigalow"
+      "recommendation": "Peter has a good sense of humour and he is very educated. He is a great teammate whose honest and constructive feedbacks I always found very useful.",
+      "peerSignature": "Krisztina Baranyai"
     }
   ],
-  "educations": [],
-  "certificates": [],
+  "educations": [
+    {
+      "instituteName": "Eötvös Loránd University",
+      "titleOfQualification": "BA in Eastern Languages and Cultures (Mongolian & Korean Studies)",
+      "started": null,
+      "finished": null,
+      "ongoing": false,
+      "academicDegree": null
+    },
+    {
+      "instituteName": "National University of Mongolia",
+      "titleOfQualification": "Scholarship Programme for Foreign Students",
+      "started": null,
+      "finished": null,
+      "ongoing": false,
+      "academicDegree": false
+    },
+    {
+      "instituteName": "LIA Iskola",
+      "titleOfQualification": "Protocol Assistant",
+      "started": null,
+      "finished": null,
+      "ongoing": false,
+      "academicDegree": null
+    }
+  ],
+  "certificates": [
+    {
+      "text": "driving licence (category 'B')"
+    }
+  ],
   "workExperiences": [
     {
-      "employer": "Vodafone Zrt.",
-      "jobTitle": "Operator",
-      "started": "946684800000",
-      "finished": "1104537600000",
-      "onGoing": false
+      "employer": "Nemzeti Művelődési Intézet",
+      "jobTitle": "Administrative Assistant",
+      "started": null,
+      "finished": null,
+      "ongoing": false
     }
   ],
-  "projectContributions": [],
-  "developerPreludes": [
+  "projectContributions": [
     {
-      "text": "php"
+      "projectName": "Volunti",
+      "projectRepositoryUrl": "https://github.com/CodecoolBP20161/advanced-module-volunti",
+      "projectDescription": "A platform to connect volunteers and organisations.",
+      "teamMates": null
     },
     {
-      "text": "git"
-    },
-    {
-      "text": "java"
-    },
-    {
-      "text": "ruby"
-    },
-    {
-      "text": "women"
+      "projectName": "Microservices for the Codecool Shop practice project",
+      "projectRepositoryUrl": "https://github.com/CodecoolBP20161/from-python-to-java-microservices-peti_balazs_jani_kriszta",
+      "projectDescription": "A cross-webshop review management system.",
+      "teamMates": null
     }
   ],
+  "developerPreludes": [],
   "skillSet": [
     {
-      "name": "ZsitHab Long string operation test Mastery",
+      "name": "Java",
       "type": "HARD",
-      "masteryLevel": "BASIC",
-      "description": "I am quite good in Zsit and ZsitHab"
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
     },
     {
-      "name": "Pakker Cuccer",
+      "name": "Python",
       "type": "HARD",
-      "masteryLevel": "BASIC",
-      "description": "I rather not."
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
     },
     {
-      "name": "Hardware Killing Withsomelongstring",
+      "name": "HTML/CSS",
       "type": "HARD",
-      "masteryLevel": "EXPERT",
-      "description": "Quite nice skills I have"
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
     },
     {
-      "name": "People",
-      "type": "SOFT",
-      "masteryLevel": "EXPERT",
-      "description": "I tend to do well with people"
+      "name": "Java EE",
+      "type": "HARD",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
     },
     {
-      "name": "Silky Smooth Soft Skill",
+      "name": "GIT",
+      "type": "HARD",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "Unit Testing",
       "type": "SOFT",
       "masteryLevel": "INTERMEDIATE",
-      "description": ""
+      "description": null
+    },
+    {
+      "name": "Clean Code",
+      "type": "SOFT",
+      "masteryLevel": "INTERMEDIATE",
+      "description": null
+    },
+    {
+      "name": "Teamwork",
+      "type": "SOFT",
+      "masteryLevel": "EXPERT",
+      "description": null
+    },
+    {
+      "name": "Assertive Communication",
+      "type": "SOFT",
+      "masteryLevel": "EXPERT",
+      "description": null
+    },
+    {
+      "name": "Helpfulness",
+      "type": "SOFT",
+      "masteryLevel": "EXPERT",
+      "description": null
     }
   ],
   "socialNetworks": [
     {
-      "title": "Facebook",
-      "url": "http://facebook.com/"
+      "title": "LINKEDIN",
+      "url": "https://www.linkedin.com/in/peterpomsar"
+    },
+    {
+      "title": "GITHUB",
+      "url": "https://github.com/ppayter-cc"
     }
   ],
-  "id": 1,
-  "courseId": "BP.2017.1",
-  "profilePicture": "https://student-profile.s3.eu-central-1.amazonaws.com/profile_pictures/1.jpg?1492632913293",
-  "selfDefinition": "I won't forget when Peter Pan came to my house, took my hand I said I was a boy; I'm glad he didn't check. \nI learned to fly, I learned to fight I lived a whole life in one night We saved each other's lives out on the pirate's deck. \nAnd I remember that night When I'm leaving a late night with some friends.",
-  "willingToWorkElsewhere": true,
+  "id": 154,
+  "courseId": "BP.2016.1",
+  "profilePicture": "http://profile.code.cool.s3.eu-central-1.amazonaws.com/profile_pictures/154.jpg?1494332729578",
+  "selfDefinition": "Curious, thirsty for knowledge and always eager to improve or learn something new. Culture enthusiast, lover of literature, deeply interested in science, technology and languages.",
+  "willingToWorkElsewhere": false,
   "preferredItSector": null,
-  "freeTextSkill": "This is the freetext skill.",
-  "mainInterests": "I like messing with programming languages, like C# and Java. All I can tell is, garbage collection is the best thing since sliced bread."
+  "freeTextSkill": "Has experience with IntelliJ, JUnit, Maven, RDBMS, SQL, ORMs, Networking, HTTP, Rest APIs, Heroku.",
+  "mainInterests": "Programming is an awesome way to help people, solve challenging problems and create something new and useful. I prefer the full-stack approach: in order to achieve the best possible solution, one has to understand the whole project from the database through the back-end logic to the UI. Going down this road I would love to master new technologies, learn mobile development and deepen my knowledge in software architecture and UX design."
 }

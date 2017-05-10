@@ -35,20 +35,20 @@
                         <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.email}}
                     </a>
                 </p>
-                {{#linkedin}}
-                <p id="linkedin">
-                    <a href="{{linkedInUrl}}">
-                        <i class="fa fa-linkedin fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.firstName}} {{personalInfo.lastName}}
+				{{#linkedIn}}
+				<p id="linkedIn">
+                    <a href="{{url}}">
+                        <i class="fa fa-linkedin fa-fw" aria-hidden="true"></i>&nbsp;{{name}}
                     </a>
                 </p>
-                {{/linkedin}}
-                {{#github}}
+                {{/linkedIn}}
+                {{#gitHub}}
                 <p id="github">
-                    <a href="{{gitHubUrl}}">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;{{gitHubShort}}
+                    <a href="{{url}}">
+                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;{{short}}
                     </a>
                 </p>
-                {{/github}}
+                {{/gitHub}}
         </div>
     </div>
     <div id="right-column">
@@ -75,12 +75,12 @@
             </tr>
         </table>
         <p>{{freeTextSkill}}</p>
-		{{#mainInterests}}
 		<h2>Main interests</h2>
-        <p>{{.}}</p>
-        {{/mainInterests}}
+		<p>{{mainInterests}}</p>
+
+		{{#projectContributions.length}}
+		<h2>Recent Projects</h2>
         {{#projectContributions}}
-        <h2>Recent Projects</h2>
         <ul id="projects">
                 <li>
                     <p>{{projectName}}</p>
@@ -88,6 +88,7 @@
                 </li>
         </ul>
         {{/projectContributions}}
+		{{/projectContributions.length}}
 
         <h2>Education</h2>
         <ul>
@@ -97,18 +98,22 @@
             {{/educations}}
         </ul>
 
-        {{#certificates}}
-        <h2>Certificates</h2>
+		{{#certificates.length}}
+		<h2>Certificates</h2>
+		{{#certificates}}
         <ul>
             <li>{{text}}</li>
         </ul>
         {{/certificates}}
+		{{/certificates.length}}
 
-        {{#peerRecommendations}}
-        <h2>Peer recommendations</h2>
+		{{#peerRecommendations.length}}
+		<h2>Peer recommendations</h2>
+		{{#peerRecommendations}}
         <p><span id="peer-recommendation-quote"><i class="fa fa-quote-right fa-3x fa-pull-left" aria-hidden="true"></i></span> {{recommendation}}</p>
         <p id="peer-name">&#8212;&nbsp;{{peerSignature}}, Teammate</p>
         {{/peerRecommendations}}
+		{{/peerRecommendations.length}}
 
         <div id="codecool-logo"></div>
     </div>
