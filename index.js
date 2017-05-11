@@ -34,8 +34,10 @@ app.post('/', function(req, res) {
 	student.hardSkills = extractSkillsByType('HARD', student.skillSet);
     student.softSkills = extractSkillsByType('SOFT', student.skillSet);
 
-    student.gitHub = createGitHubDataObject(student);
-	student.linkedIn = createLinkedInDataObject(student);
+    if(student.socialNetworks) {
+		student.gitHub = createGitHubDataObject(student);
+		student.linkedIn = createLinkedInDataObject(student);
+	}
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
