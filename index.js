@@ -61,14 +61,14 @@ app.post('/', function(req, res) {
 var extractSkillsByType = function (type, skills) {
     var result = [];
     if(skills === undefined){
-    	return undefined;
+    	return result;
 	}
     for (var i = 0; i < skills.length; i++) {
         if (skills[i].type === type) {
             result.push(skills[i]);
         }
     }
-    return result.length > 0 ? result : undefined;
+    return result;
 };
 
 /**
@@ -78,6 +78,9 @@ var extractSkillsByType = function (type, skills) {
  */
 var extractGitHubUrl = function (socialNetworks) {
 	var result = "#";
+	if(socialNetworks === undefined){
+		return result;
+	}
 	for (var i = 0; i < socialNetworks.length; i++) {
 		if (socialNetworks[i].title === "GITHUB") {
 			result = socialNetworks[i].url;
@@ -93,6 +96,9 @@ var extractGitHubUrl = function (socialNetworks) {
  */
 var extractLinkedInUrl = function (socialNetworks) {
 	var result = "#";
+	if(socialNetworks === undefined){
+		return result;
+	}
 	for (var i = 0; i < socialNetworks.length; i++) {
 		if (socialNetworks[i].title === "LINKEDIN") {
 			result = socialNetworks[i].url;
