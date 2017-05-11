@@ -12,9 +12,7 @@ app.use(bodyParser.json());
 /** CORS CONFIGURATION */
 app.use(function(req, res, next) {
 
-	// if the requesting party has defined settings, use those,
-	// otherwise allow all
-	res.header('Access-Control-Allow-Origin', req.get('Origin') || '*');
+	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Credentials', 'true');
 	res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
 	res.header('Access-Control-Expose-Headers', 'Content-Length');
@@ -34,12 +32,14 @@ app.post('/', function(req, res) {
 	student.hardSkills = extractSkillsByType('HARD', student.skillSet);
     student.softSkills = extractSkillsByType('SOFT', student.skillSet);
 
-    student.gitHub = createGitHubDataObject(student);
-	student.linkedIn = createLinkedInDataObject(student);
+    if(student.socialNetworks && student.socialNetworks.length > 0) {
+		student.gitHub = createGitHubDataObject(student);
+		student.linkedIn = createLinkedInDataObject(student);
+	}
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
-	
+
 	emitter.on('data', function(data) {
     	html += data.toString();
 	});
@@ -47,7 +47,7 @@ app.post('/', function(req, res) {
 	emitter.on('end', function () {
 	    pdf.create(html).toBuffer(function(err, buffer) {
 			res.send(buffer);
-    	});	
+    	});
 	});
 });
 
@@ -78,6 +78,9 @@ var extractSkillsByType = function (type, skills) {
  */
 var extractGitHubUrl = function (socialNetworks) {
 	var result = "#";
+	if(socialNetworks === undefined){
+		return result;
+	}
 	for (var i = 0; i < socialNetworks.length; i++) {
 		if (socialNetworks[i].title === "GITHUB") {
 			result = socialNetworks[i].url;
@@ -93,6 +96,9 @@ var extractGitHubUrl = function (socialNetworks) {
  */
 var extractLinkedInUrl = function (socialNetworks) {
 	var result = "#";
+	if(socialNetworks === undefined){
+		return result;
+	}
 	for (var i = 0; i < socialNetworks.length; i++) {
 		if (socialNetworks[i].title === "LINKEDIN") {
 			result = socialNetworks[i].url;
@@ -123,7 +129,7 @@ var extractGitHubShort = function (url) {
  */
 var createGitHubDataObject = function(student){
 	var url = extractGitHubUrl(student.socialNetworks);
-	if(url !== '#'){
+	if(url && url !== '#'){
 		return {
 			url: url,
 			short: extractGitHubShort(url)
@@ -141,7 +147,7 @@ var createGitHubDataObject = function(student){
  */
 var createLinkedInDataObject = function(student){
 	var url = extractLinkedInUrl(student.socialNetworks);
-	if(url !== '#'){
+	if(url && url !== '#'){
 		return {
 			url: url,
 			name: student.personalInfo.firstName + ' ' + student.personalInfo.lastName
