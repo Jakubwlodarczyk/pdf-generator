@@ -32,14 +32,14 @@ app.post('/', function(req, res) {
 	student.hardSkills = extractSkillsByType('HARD', student.skillSet);
     student.softSkills = extractSkillsByType('SOFT', student.skillSet);
 
-    if(student.socialNetworks) {
+    if(student.socialNetworks && student.socialNetworks.length > 0) {
 		student.gitHub = createGitHubDataObject(student);
 		student.linkedIn = createLinkedInDataObject(student);
 	}
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
-	
+
 	emitter.on('data', function(data) {
     	html += data.toString();
 	});
@@ -47,7 +47,7 @@ app.post('/', function(req, res) {
 	emitter.on('end', function () {
 	    pdf.create(html).toBuffer(function(err, buffer) {
 			res.send(buffer);
-    	});	
+    	});
 	});
 });
 
@@ -129,7 +129,7 @@ var extractGitHubShort = function (url) {
  */
 var createGitHubDataObject = function(student){
 	var url = extractGitHubUrl(student.socialNetworks);
-	if(url !== '#'){
+	if(url && url !== '#'){
 		return {
 			url: url,
 			short: extractGitHubShort(url)
@@ -147,7 +147,7 @@ var createGitHubDataObject = function(student){
  */
 var createLinkedInDataObject = function(student){
 	var url = extractLinkedInUrl(student.socialNetworks);
-	if(url !== '#'){
+	if(url && url !== '#'){
 		return {
 			url: url,
 			name: student.personalInfo.firstName + ' ' + student.personalInfo.lastName
