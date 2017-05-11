@@ -61,14 +61,14 @@ app.post('/', function(req, res) {
 var extractSkillsByType = function (type, skills) {
     var result = [];
     if(skills === undefined){
-    	return result;
+    	return undefined;
 	}
     for (var i = 0; i < skills.length; i++) {
         if (skills[i].type === type) {
             result.push(skills[i]);
         }
     }
-    return result;
+    return result.length > 0 ? result : undefined;
 };
 
 /**
@@ -150,4 +150,4 @@ var createLinkedInDataObject = function(student){
 	return undefined;
 };
 
-app.listen(8080);
+app.listen(9999);
