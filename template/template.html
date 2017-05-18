@@ -13,14 +13,14 @@
     <div id="left-column">
         <div id="left-column-top">
             <div id="avatar" style="background-image: url('{{profilePicture}}')"></div>
-            <p id="name">{{personalInfo.firstName}} {{personalInfo.lastName}}</p>
+            <p id="name">{{personalInfo.firstName}} <span id="lastname">{{personalInfo.lastName}}</span></p>
             <p id="date-of-birth">{{personalInfo.birthDate}}</p>
         </div>
         <div id="left-column-middle">
             <h2>Self definition</h2>
-            <p id="self-definition">{{selfDefinition}}</p>
+            <p class="longtext-sidebar">{{selfDefinition}}</p>
             <h2>Mentors opinion</h2>
-            <p id="mentor-opinion">{{mentorOpinions.0.opinion}}</p>
+            <p class="longtext-sidebar">"{{mentorOpinions.0.opinion}}"</p>
             <p id="mentor-name">&#8212;&nbsp;{{mentorOpinions.0.mentorSignature}}, Mentor</p>
         </div>
         <div id="left-column-bottom">
