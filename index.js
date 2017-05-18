@@ -25,17 +25,11 @@ app.use(function(req, res, next) {
 });
 
 app.post('/', function(req, res) {
-
 	var student = req.body;
 	student.css = css;
 
-	student.hardSkills = extractSkillsByType('HARD', student.skillSet);
-    student.softSkills = extractSkillsByType('SOFT', student.skillSet);
-
-    if(student.socialNetworks && student.socialNetworks.length > 0) {
-		student.gitHub = createGitHubDataObject(student);
-		student.linkedIn = createLinkedInDataObject(student);
-	}
+    student.softSkills = extractSkillsByType('0', student.skillSet);
+    student.hardSkills = extractSkillsByType('1', student.skillSet);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -60,14 +54,12 @@ app.post('/', function(req, res) {
  */
 var extractSkillsByType = function (type, skills) {
     var result = [];
-    if(skills === undefined){
-    	return result;
-	}
     for (var i = 0; i < skills.length; i++) {
         if (skills[i].type === type) {
             result.push(skills[i]);
         }
     }
+    console.log("esbt ret: ", result);
     return result;
 };
 
