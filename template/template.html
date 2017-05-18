@@ -84,7 +84,7 @@
         {{#projectContributions}}
         <ul id="projects">
                 <li>
-                    <p>{{projectName}}</p>
+                    <p>{{projectName}} <a href="{{projectRepositoryUrl}}">link</a></p>
                     <small>{{projectDescription}}</small>
                 </li>
         </ul>
@@ -95,7 +95,7 @@
         <ul>
 			<li>Codecool</li>
             {{#educations}}
-                <li>{{instituteName}}</li>
+                <li>{{instituteName}} <small>({{started}}-{{finished}})</small></li>
             {{/educations}}
         </ul>
 
