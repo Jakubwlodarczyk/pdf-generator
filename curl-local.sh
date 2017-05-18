@@ -10,7 +10,7 @@
 #npm start &
 #TASK_PID=$!
 #sleep 2
-curl -X POST http://localhost:8080 -d @sample/sample-student.json --header "Content-Type: application/json" > locally-generated.pdf
+curl -X POST http://localhost:8080 -d @sample/sample-student.json --header 'Content-Type: application/json' > locally-generated.pdf
 #kill $TASK_PID
 #PORT=`fuser 8080/tcp`
 #kill $PORT
