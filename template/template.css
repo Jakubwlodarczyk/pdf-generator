@@ -98,30 +98,43 @@ small {
 }
 
 #left-column-bottom p {
-    padding: 0 0 0 7pt;
+
 }
 
 #left-column-bottom .fa {
-    font-size: 12pt;
-    top: 2pt;
+    font-size: 11px;
+    top: 1px;
+    margin-left: -2px;
+    /*border-right: solid 1px white;*/
     position: relative;
-    border-right: 1px solid white;
-    padding-right: 4pt;
-    margin-right: 4pt;
+    padding-right: 3pt;
+    margin-right: 3pt;
 }
+
 
 #left-column-bottom span, #left-column-bottom a, #left-column-bottom a:visited, #left-column-bottom a:active {
     color: #fff !important;
     text-decoration: none;
-    margin: 0 5pt 0;
+    /*margin: 0 5pt 0;*/
 }
 
-#phone {
-    margin-top: 0;
+.flaggy {
+    font-size: 11px;
+    top: 1px;
+    margin-left: -2px;
+    position: relative;
+    padding-right: 3pt;
+    margin-right: 3pt;
+    border-radius: 2px;
+}
+
+.contact-elements p {
+    /*background-color: orange;*/
+    font-size: 5pt;
 }
 
 .long-email {
-    font-size: .9em
+    font-size: .8em
 }
 
 #mentor-name, #peer-name {

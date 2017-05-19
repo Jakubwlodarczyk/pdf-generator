@@ -6,6 +6,7 @@
     <title></title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css" />
     <style>{{css}}</style>
 </head>
 
@@ -24,31 +25,20 @@
             <p id="mentor-name">&#8212;&nbsp;{{mentorOpinions.0.mentorSignature}}, Mentor</p>
         </div>
         <div id="left-column-bottom">
+            <h2>Spoken Languages</h2>
+            <div class="contact-elements">
+                <p><span class="flaggy flag-icon flag-icon-gb"></span>&nbsp;English</p>
+                <p><span class="flaggy flag-icon flag-icon-de"></span> German</p>
+                <p><span class="flaggy flag-icon flag-icon-fr"></span> French</p>
+            </div>
+
             <h2>Contact</h2>
-                <p id="phone">
-                    <span>
-                        <i class="fa fa-phone fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.phoneNumber}}
-                    </span>
-                </p>
-                <p id="email" class="{{#show.emailLong}}long-email{{/show.emailLong}}">
-                    <a href="mailto:{{email}}?cc={{mentorEmail}}">
-                        <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.email}}
-                    </a>
-                </p>
-				{{#linkedIn}}
-				<p id="linkedIn">
-                    <a href="{{url}}">
-                        <i class="fa fa-linkedin fa-fw" aria-hidden="true"></i>&nbsp;{{name}}
-                    </a>
-                </p>
-                {{/linkedIn}}
-                {{#gitHub}}
-                <p id="github">
-                    <a href="{{url}}">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;{{short}}
-                    </a>
-                </p>
-                {{/gitHub}}
+                <div class="contact-elements">
+                    <p><i class="fa fa-phone fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.phoneNumber}}</p>
+                    <p><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>&nbsp;<a href="mailto:{{personalInfo.email}}">{{personalInfo.email}}</a></p>
+                    <p><i class="fa fa-linkedin fa-fw" aria-hidden="true"></i>&nbsp;<a href="{{linkedinUrl}}">{{linkedinName}}</a></p>
+                    <p><i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;<a href="{{githubUrl}}">{{githubName}}</a></p>
+                </div>
         </div>
     </div>
     <div id="right-column">
@@ -93,7 +83,6 @@
 
         <h2>Education</h2>
         <ul>
-			<li>Codecool</li>
             {{#educations}}
                 <li>{{instituteName}} <small>({{started}}-{{finished}})</small></li>
             {{/educations}}

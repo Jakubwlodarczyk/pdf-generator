@@ -9,6 +9,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mu2": "^0.5.21",
-    "html-pdf": "^2.1.0"
+    "html-pdf": "^2.1.0",
+    "flag-icon-css": "^2.8.0"
   }
 }
