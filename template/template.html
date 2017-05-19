@@ -84,7 +84,7 @@
         {{#projectContributions}}
         <ul id="projects">
                 <li>
-                    <p>{{projectName}} <a href="{{projectRepositoryUrl}}">link</a></p>
+                    <p>{{projectName}} <a href="{{projectRepositoryUrl}}" class="repolink">&nbsplink</a></p>
                     <small>{{projectDescription}}</small>
                 </li>
         </ul>
@@ -115,6 +115,9 @@
         <p id="peer-name">&#8212;&nbsp;{{peerSignature}}, Teammate</p>
         {{/peerRecommendations}}
 		{{/peerRecommendations.length}}
+
+        <h2>Interesting Things About Me</h2>
+        <p>{{aboutMe}}</p>
 
         <!--<div id="codecool-logo"></div>-->
     </div>

@@ -59,7 +59,6 @@ var extractSkillsByType = function (type, skills) {
             result.push(skills[i]);
         }
     }
-    console.log("esbt ret: ", result);
     return result;
 };
 

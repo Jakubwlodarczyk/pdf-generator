@@ -2,6 +2,7 @@
 html, body {
     font-family: 'Montserrat', sans-serif;
     font-size: 6pt;
+    color: #4c4f52;
     display: block;
     /*width: 210mm;*/
     width: 100%;
@@ -14,10 +15,10 @@ html, body {
 
 h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 6pt;
+    font-size: 8pt;
     font-weight: 700;
     display: inline-block;
-    padding: 0 14pt;
+    padding: 0 18pt;
     text-transform: capitalize;
 }
 
@@ -70,7 +71,7 @@ small {
 }
 
 #left-column p {
-    padding: 0 14pt;
+    padding: 0 18pt;
 }
 
 
@@ -87,7 +88,7 @@ small {
 }
 
 #left-column-middle h2:first-of-type {
-    padding-top: 6pt;
+    padding-top: 16pt;
 }
 
 #left-column-bottom {
@@ -140,6 +141,15 @@ small {
     /*background-color: orange;*/
 }
 
+.repolink::before {
+    content: '\2027';
+}
+
+.repolink {
+    color: #d3363b;
+    text-decoration: none;
+}
+
 #before {
     margin-top: 30px;
 }
@@ -164,7 +174,7 @@ small {
 }
 
 #skills .divider {
-    width: 14pt;
+    width: 0;
 }
 
 #skills p {
@@ -186,7 +196,7 @@ li {
 
 li::before {
     padding-right: 3pt;
-    content: '\21E8';
+    content: '\21E2';
     vertical-align: top;
     color: #db4041;
 }
