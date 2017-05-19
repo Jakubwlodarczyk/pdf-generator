@@ -9,7 +9,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f4f2ef !important;
+    background-color: #f2f2f2 !important;
 }
 
 h2 {
@@ -129,31 +129,38 @@ small {
 }
 
 #right-column {
-    float: left;
+    float: right;
     /*width: 15cm;*/
     width: 70%;
     margin-left: -.1%;
 }
 
 #right-column p, ul {
-    padding: 0 14pt;
+    padding: 0 24pt;
+    /*background-color: orange;*/
+}
+
+#before {
+    margin-top: 30px;
 }
 
 #right-column h2 {
-    padding: 1pt 14pt;
+    padding: 0 24pt;
+    margin-bottom: 0;
     color: #4c97ca;
     font-size: 8pt;
+    /*background-color: yellow;*/
     /*background: #4c98cb;*/
 }
 
 #skills {
     width: calc(100% - 28pt);
-    margin: 6pt 14pt;
+    /*margin: 6pt 14pt;*/
 }
 
 #skills td:not(.divider) {
     vertical-align: top;
-    background: #ece9e4;
+    background: transparent;
 }
 
 #skills .divider {
@@ -162,6 +169,7 @@ small {
 
 #skills p {
     font-weight: bold;
+    color: #d3363b;
 }
 
 #skills li {
