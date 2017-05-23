@@ -5,6 +5,7 @@ var pdf = require('html-pdf');
 var fs = require('fs');
 var templateDir = './template/';
 var css_color = fs.readFileSync(templateDir + 'template.css', 'utf-8');
+var css_bw = fs.readFileSync(templateDir + 'templateblackwhite.css', 'utf-8');
 var app = express();
 app.use(bodyParser.json());
 
@@ -27,7 +28,10 @@ app.use(function(req, res, next) {
 
 app.post('/', function(req, res) {
 	var student = req.body;
-	student.css = css_color;
+    student.css = css_color;
+	if (student.printerFriendly) {
+        student.css = css_bw;
+	}
     student.softSkills = extractSkillsByType('0', student.skillSet);
     student.hardSkills = extractSkillsByType('1', student.skillSet);
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
