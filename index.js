@@ -33,7 +33,8 @@ app.post('/', function(req, res) {
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
 	student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
 	student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
-	student.educations.sort(compareEducations);
+	student.educations.sort(compare);
+	student.workExperiences.sort(compare);
 	student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
 
 	var html = "";
@@ -167,7 +168,7 @@ var prettifyBirthday = function (birthday) {
 };
 
 
-var compareEducations = function (a, b) {
+var compare = function (a, b) {
     if (a.started > b.started)
         return -1;
     if (a.started < b.started)
