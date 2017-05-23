@@ -5,9 +5,9 @@ var pdf = require('html-pdf');
 var fs = require('fs');
 var templateDir = './template/';
 var css_color = fs.readFileSync(templateDir + 'template.css', 'utf-8');
-
 var app = express();
 app.use(bodyParser.json());
+
 
 /** CORS CONFIGURATION */
 app.use(function(req, res, next) {
@@ -24,6 +24,7 @@ app.use(function(req, res, next) {
 	}
 });
 
+
 app.post('/', function(req, res) {
 	var student = req.body;
 	student.css = css_color;
@@ -32,6 +33,8 @@ app.post('/', function(req, res) {
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
 	student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
 	student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
+	student.educations.sort(compareEducations);
+	student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -46,6 +49,7 @@ app.post('/', function(req, res) {
     	});
 	});
 });
+
 
 /**
  * Extract languages and generate abbreviations:
@@ -82,6 +86,7 @@ var extractLanguagesByLanguageName = function (language) {
 	return result;
 };
 
+
 /**
  * Extract skills from the set, by type:
  * HARD / SOFT.
@@ -99,6 +104,14 @@ var extractSkillsByType = function (type, skills) {
     return result;
 };
 
+
+/**
+ * Generates an object based on a social network name and a given array:
+ * input strs: 'GITHUB' || 'LINKEDIN'
+ * @param networkName
+ * @param socialNetworks
+ * @returns {Object}
+ */
 var createSocialNetworkObject = function (networkName, socialNetworks) {
     var result = {name: "N/A", url: "#"};
     if(socialNetworks === undefined){
@@ -110,8 +123,57 @@ var createSocialNetworkObject = function (networkName, socialNetworks) {
             result.url = socialNetworks[i].url;
         }
     }
-    console.log("mielott visszater ", result);
     return result;
-}
+};
+
+
+/**
+ * Generates a prettified birthday string:
+ * Example: YYYY-MM-DD -> DD MONTH YYYY
+ * @param birthday
+ * @returns {String}
+ */
+var prettifyBirthday = function (birthday) {
+	var chunks = birthday.split('-');
+	var year = parseInt(chunks[0]);
+	var month = parseInt(chunks[1]);
+	var day = parseInt(chunks[2]);
+	if (month === 1) {
+		month = 'January'
+	} else if (month === 2) {
+        month = 'February'
+	} else if (month === 3) {
+        month = 'March'
+    } else if (month === 4) {
+        month = 'April'
+    } else if (month === 5) {
+        month = 'May'
+    } else if (month === 6) {
+        month = 'June'
+    } else if (month === 7) {
+        month = 'July'
+    } else if (month === 8) {
+        month = 'August'
+    } else if (month === 9) {
+        month = 'September'
+    } else if (month === 10) {
+        month = 'October'
+    } else if (month === 11) {
+        month = 'November'
+    } else if (month === 12) {
+        month = 'December'
+    }
+	return day + ' ' + month + ' ' + year;
+};
+
+
+var compareEducations = function (a, b) {
+    if (a.started > b.started)
+        return -1;
+    if (a.started < b.started)
+        return 1;
+    return 0;
+};
+
 
 app.listen(8080);
