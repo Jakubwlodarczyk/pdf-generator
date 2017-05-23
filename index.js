@@ -29,9 +29,9 @@ app.post('/', function(req, res) {
 	student.css = css_color;
     student.softSkills = extractSkillsByType('0', student.skillSet);
     student.hardSkills = extractSkillsByType('1', student.skillSet);
-    console.log("Elotte ", student.spokenLanguages);
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
-	console.log("Utana ", student.spokenLanguages);
+	student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
+	student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -47,12 +47,16 @@ app.post('/', function(req, res) {
 	});
 });
 
+/**
+ * Extract languages and generate abbreviations:
+ * HARD / SOFT.
+ * @param language
+ * @returns {Array}
+ */
 var extractLanguagesByLanguageName = function (language) {
 	var result = [];
 	for (var i = 0; i < language.length; i++) {
         if (language[i].level !== 'NATIVE') {
-            // console.log(">>", language[i].languageName);
-            // console.log(">>", language[i].level);
             var element = {languageName: "", abbreviation: ""};
             element.languageName = language[i].languageName.toLowerCase();
             if (language[i].languageName === 'ENGLISH') {
@@ -95,89 +99,19 @@ var extractSkillsByType = function (type, skills) {
     return result;
 };
 
-/**
- * Extract GitHub URL by key from the socialnetwork data.
- * @param socialNetworks
- * @returns '#' - to act as href value or the url itself.
- */
-var extractGitHubUrl = function (socialNetworks) {
-	var result = "#";
-	if(socialNetworks === undefined){
-		return result;
-	}
-	for (var i = 0; i < socialNetworks.length; i++) {
-		if (socialNetworks[i].title === "GITHUB") {
-			result = socialNetworks[i].url;
-		}
-	}
-	return result;
-};
-
-/**
- * Extract LinkedIn URL by key from the socialnetwork data.
- * @param socialNetworks
- * @returns '#' - to act as href value or the url itself.
- */
-var extractLinkedInUrl = function (socialNetworks) {
-	var result = "#";
-	if(socialNetworks === undefined){
-		return result;
-	}
-	for (var i = 0; i < socialNetworks.length; i++) {
-		if (socialNetworks[i].title === "LINKEDIN") {
-			result = socialNetworks[i].url;
-		}
-	}
-	return result;
-};
-
-/**
- * Extract the short part (after the / ) from a GitHub link.
- * @param url
- * @returns {*}
- */
-var extractGitHubShort = function (url) {
-	var chopped = url.split("/");
-	if (chopped[chopped.length - 1] === "") {
-		return result = chopped[chopped.length - 2];
-	}
-	return result = chopped[chopped.length - 1];
-};
-
-/**
- * Creates GitHub content holder object, or returns undefined
- * if no GitHub url was provided. Needed to be able to hide the
- * section with Mustache if missing.
- * @param student
- * @returns {*}
- */
-var createGitHubDataObject = function(student){
-	var url = extractGitHubUrl(student.socialNetworks);
-	if(url && url !== '#'){
-		return {
-			url: url,
-			short: extractGitHubShort(url)
-		};
-	}
-	return undefined;
-};
-
-/**
- * Creates LinkedIn content holder object, or returns undefined
- * if no LinkedIn url was provided. Needed to be able to hide the
- * section with Mustache if missing.
- * @param student
- * @returns {*}
- */
-var createLinkedInDataObject = function(student){
-	var url = extractLinkedInUrl(student.socialNetworks);
-	if(url && url !== '#'){
-		return {
-			url: url,
-			name: student.personalInfo.firstName + ' ' + student.personalInfo.lastName
-		};
-	}
-	return undefined;
-};
+var createSocialNetworkObject = function (networkName, socialNetworks) {
+    var result = {name: "N/A", url: "#"};
+    if(socialNetworks === undefined){
+        return result;
+    }
+    for (var i = 0; i < socialNetworks.length; i++) {
+        if (socialNetworks[i].title === networkName) {
+            result.name = socialNetworks[i].name;
+            result.url = socialNetworks[i].url;
+        }
+    }
+    console.log("mielott visszater ", result);
+    return result;
+}
 
 app.listen(8080);
