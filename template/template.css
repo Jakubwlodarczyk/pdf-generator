@@ -128,6 +128,10 @@ small {
     border-radius: 2px;
 }
 
+.languageName {
+    text-transform: capitalize;
+}
+
 .contact-elements p {
     /*background-color: orange;*/
     font-size: 5pt;

@@ -27,9 +27,9 @@
         <div id="left-column-bottom">
             <h2>Spoken Languages</h2>
             <div class="contact-elements">
-                <p><span class="flaggy flag-icon flag-icon-gb"></span>&nbsp;English</p>
-                <p><span class="flaggy flag-icon flag-icon-de"></span> German</p>
-                <p><span class="flaggy flag-icon flag-icon-fr"></span> French</p>
+                {{#spokenLanguages}}
+                <p><span class="flaggy flag-icon flag-icon-{{abbreviation}}"></span>&nbsp;<span class="languageName">{{languageName}}</span></p>
+                {{/spokenLanguages}}
             </div>
 
             <h2>Contact</h2>

@@ -17,6 +17,16 @@
          "languageName":"GERMAN",
          "level":"LOW_INTERMEDIATE",
          "visibleOnPDF":true
+      },
+      {
+         "languageName":"HUNGARIAN",
+         "level":"NATIVE",
+         "visibleOnPDF":true
+      },
+      {
+         "languageName":"SLOVAKIAN",
+         "level":"ADVANCED",
+         "visibleOnPDF":true
       }
    ],
    "mentorOpinions":[

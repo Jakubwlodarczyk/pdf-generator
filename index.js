@@ -29,7 +29,9 @@ app.post('/', function(req, res) {
 	student.css = css_color;
     student.softSkills = extractSkillsByType('0', student.skillSet);
     student.hardSkills = extractSkillsByType('1', student.skillSet);
-
+    console.log("Elotte ", student.spokenLanguages);
+    student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
+	console.log("Utana ", student.spokenLanguages);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -44,6 +46,37 @@ app.post('/', function(req, res) {
     	});
 	});
 });
+
+var extractLanguagesByLanguageName = function (language) {
+	var result = [];
+	for (var i = 0; i < language.length; i++) {
+        if (language[i].level !== 'NATIVE') {
+            // console.log(">>", language[i].languageName);
+            // console.log(">>", language[i].level);
+            var element = {languageName: "", abbreviation: ""};
+            element.languageName = language[i].languageName.toLowerCase();
+            if (language[i].languageName === 'ENGLISH') {
+            	element.abbreviation = 'gb';
+			} else if (language[i].languageName === 'GERMAN') {
+                element.abbreviation = 'de';
+            } else if (language[i].languageName === 'SPANISH') {
+                element.abbreviation = 'es';
+            } else if (language[i].languageName === 'HUNGARIAN') {
+                element.abbreviation = 'hu';
+            } else if (language[i].languageName === 'POLISH') {
+                element.abbreviation = 'pl';
+            } else if (language[i].languageName === 'FRENCH') {
+                element.abbreviation = 'fr';
+            } else if (language[i].languageName === 'ITALIAN') {
+                element.abbreviation = 'it';
+            } else if (language[i].languageName === 'SLOVAKIAN') {
+                element.abbreviation = 'sk';
+            }
+			result.push(element);
+		}
+	}
+	return result;
+};
 
 /**
  * Extract skills from the set, by type:
