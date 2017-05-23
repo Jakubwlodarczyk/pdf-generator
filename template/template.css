@@ -235,7 +235,6 @@ li:not(:last-of-type) p:not(:first-of-type) {
 
 #projects small {
     display: block;
-    padding-left: 22pt;
 }
 
 #peer-recommendation-quote {
