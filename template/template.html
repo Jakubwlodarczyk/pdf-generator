@@ -84,18 +84,18 @@
         <h2>Education</h2>
         <ul>
             {{#educations}}
-                <li>{{instituteName}} <small>({{started}}-{{finished}})</small></li>
+                <li>{{instituteName}}, {{titleOfQualification}} <small>({{started}}-{{finished}})</small></li>
             {{/educations}}
         </ul>
 
-		{{#certificates.length}}
-		<h2>Certificates</h2>
-		{{#certificates}}
+		{{#workExperiences.length}}
+		<h2>Work Experience</h2>
         <ul>
-            <li>{{text}}</li>
+            {{#workExperiences}}
+            <li>{{employer}}, {{jobTitle}} <small>({{started}}-{{finished}})</small></li>
+            {{/workExperiences}}
         </ul>
-        {{/certificates}}
-		{{/certificates.length}}
+		{{/workExperiences.length}}
 
 		{{#peerRecommendations.length}}
 		<h2>Peer recommendations</h2>

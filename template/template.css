@@ -169,11 +169,11 @@ small {
 }
 
 #before {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 #right-column h2 {
-    padding: 0 24pt;
+    margin-left: 8px;
     margin-bottom: 0;
     color: #4c97ca;
     font-size: 8pt;
@@ -209,7 +209,7 @@ ul {
 }
 
 li {
-    margin-bottom: 2pt;
+    margin-bottom: 1pt;
 }
 
 li::before {
