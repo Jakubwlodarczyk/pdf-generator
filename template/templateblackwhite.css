@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400i,600,600i|Montserrat:300,800');
+@import url("https://npmcdn.com/jquery-gray@1.5.0/css/gray.min.css");
 html, body {
     font-family: 'Montserrat', sans-serif;
     font-size: 6pt;
-    color: #4c4f52;
+    color: #000;
     display: block;
     /*width: 210mm;*/
     width: 100%;
@@ -10,7 +11,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2 !important;
+    background-color: #fff !important;
 }
 
 h2 {
@@ -30,15 +31,15 @@ small {
     float: left;
     width: 30%;
     height: 100%;
-    color: #fff;
-    background: #4c97ca !important;
+    color: #000;
+    background: #fff !important;
 }
 
 #left-column-top {
     position: relative;
     z-index: 100;
     display: inline-block;
-    background: #278bc4;
+    background: #fff;
 }
 
 #avatar {
@@ -68,7 +69,7 @@ small {
     padding: 0;
     text-align: center;
     font-size: 10px;
-    color: #14547a;
+    color: #000;
 }
 
 #left-column p {
@@ -81,7 +82,7 @@ small {
     font-size: 7.2pt;
     font-style: italic;
     font-weight: bold;
-    color: #0e5277;
+    color: #000;
 }
 
 #left-column-middle h2 {
@@ -114,7 +115,7 @@ small {
 
 
 #left-column-bottom span, #left-column-bottom a, #left-column-bottom a:visited, #left-column-bottom a:active {
-    color: #fff !important;
+    color: #000 !important;
     text-decoration: none;
     /*margin: 0 5pt 0;*/
 }
@@ -144,7 +145,7 @@ small {
 
 
 #mentor-name, #peer-name {
-    color: #0e5277;
+    color: #000;
     text-align: right;
 }
 
@@ -165,7 +166,7 @@ small {
 }
 
 .repolink {
-    color: #d3363b;
+    color: #000;
     text-decoration: none;
 }
 
@@ -176,7 +177,7 @@ small {
 #right-column h2 {
     margin-left: 8px;
     margin-bottom: 0;
-    color: #4c97ca;
+    color: #000;
     font-size: 8pt;
     /*background-color: yellow;*/
     /*background: #4c98cb;*/
@@ -198,7 +199,7 @@ small {
 
 #skills p {
     font-weight: bold;
-    color: #d3363b;
+    color: #000;
 }
 
 #skills li {
@@ -217,7 +218,7 @@ li::before {
     padding-right: 3pt;
     content: '\21E2';
     vertical-align: top;
-    color: #db4041;
+    color: #000;
 }
 
 li p {
@@ -239,7 +240,7 @@ li:not(:last-of-type) p:not(:first-of-type) {
 }
 
 #peer-recommendation-quote {
-    color: #bbb;
+    color: #000;
 }
 
 #footer {

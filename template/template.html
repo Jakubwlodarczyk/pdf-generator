@@ -6,6 +6,7 @@
     <title></title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css" />
     <style>{{css}}</style>
 </head>
 
@@ -13,46 +14,35 @@
     <div id="left-column">
         <div id="left-column-top">
             <div id="avatar" style="background-image: url('{{profilePicture}}')"></div>
-            <p id="name">{{personalInfo.firstName}} {{personalInfo.lastName}}</p>
-            <p id="date-of-birth">{{personalInfo.birthDate}}</p>
+            <p id="name">{{personalInfo.firstName}} <span id="lastname">{{personalInfo.lastName}}</span></p>
+            <p id="date-of-birth">{{prettifiedBirthday}}</p>
         </div>
         <div id="left-column-middle">
-            <h2>Self definition</h2>
-            <p id="self-definition">{{selfDefinition}}</p>
-            <h2>Mentors opinion</h2>
-            <p id="mentor-opinion">{{mentorOpinions.0.opinion}}</p>
+            <h2>Self Definition</h2>
+            <p class="longtext-sidebar">{{selfDefinition}}</p>
+            <h2>Mentor Opinion</h2>
+            <p class="longtext-sidebar">“{{mentorOpinions.0.opinion}}“</p>
             <p id="mentor-name">&#8212;&nbsp;{{mentorOpinions.0.mentorSignature}}, Mentor</p>
         </div>
         <div id="left-column-bottom">
+            <h2>Spoken Languages</h2>
+            <div class="contact-elements">
+                {{#spokenLanguages}}
+                <p><span class="flaggy flag-icon flag-icon-{{abbreviation}}"></span>&nbsp;<span class="languageName">{{languageName}}</span></p>
+                {{/spokenLanguages}}
+            </div>
+
             <h2>Contact</h2>
-                <p id="phone">
-                    <span>
-                        <i class="fa fa-phone fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.phoneNumber}}
-                    </span>
-                </p>
-                <p id="email" class="{{#show.emailLong}}long-email{{/show.emailLong}}">
-                    <a href="mailto:{{email}}?cc={{mentorEmail}}">
-                        <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.email}}
-                    </a>
-                </p>
-				{{#linkedIn}}
-				<p id="linkedIn">
-                    <a href="{{url}}">
-                        <i class="fa fa-linkedin fa-fw" aria-hidden="true"></i>&nbsp;{{name}}
-                    </a>
-                </p>
-                {{/linkedIn}}
-                {{#gitHub}}
-                <p id="github">
-                    <a href="{{url}}">
-                        <i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;{{short}}
-                    </a>
-                </p>
-                {{/gitHub}}
+                <div class="contact-elements">
+                    <p><i class="fa fa-phone fa-fw" aria-hidden="true"></i>&nbsp;{{personalInfo.phoneNumber}}</p>
+                    <p><i class="fa fa-envelope fa-fw" aria-hidden="true"></i>&nbsp;<a href="mailto:{{personalInfo.email}}">{{personalInfo.email}}</a></p>
+                    <p><i class="fa fa-linkedin fa-fw" aria-hidden="true"></i>&nbsp;<a href="{{linkedin.url}}">{{linkedin.name}}</a></p>
+                    <p><i class="fa fa-github fa-fw" aria-hidden="true"></i>&nbsp;<a href="{{github.url}}">{{github.name}}</a></p>
+                </div>
         </div>
     </div>
     <div id="right-column">
-        <h2>Skills</h2>
+        <h2 id="before">Strengths</h2>
         <table id="skills" cellpadding=0 cellspacing=0>
             <tr>
                 <td>
@@ -84,7 +74,7 @@
         {{#projectContributions}}
         <ul id="projects">
                 <li>
-                    <p>{{projectName}}</p>
+                    <p>{{projectName}} <a href="{{projectRepositoryUrl}}" class="repolink">&nbsplink</a></p>
                     <small>{{projectDescription}}</small>
                 </li>
         </ul>
@@ -93,20 +83,19 @@
 
         <h2>Education</h2>
         <ul>
-			<li>Codecool</li>
             {{#educations}}
-                <li>{{instituteName}}</li>
+                <li>{{instituteName}}, {{titleOfQualification}} <small>({{started}}-{{finished}})</small></li>
             {{/educations}}
         </ul>
 
-		{{#certificates.length}}
-		<h2>Certificates</h2>
-		{{#certificates}}
+		{{#workExperiences.length}}
+		<h2>Work Experience</h2>
         <ul>
-            <li>{{text}}</li>
+            {{#workExperiences}}
+            <li>{{employer}}, {{jobTitle}} <small>({{started}}-{{finished}})</small></li>
+            {{/workExperiences}}
         </ul>
-        {{/certificates}}
-		{{/certificates.length}}
+		{{/workExperiences.length}}
 
 		{{#peerRecommendations.length}}
 		<h2>Peer recommendations</h2>
@@ -116,7 +105,12 @@
         {{/peerRecommendations}}
 		{{/peerRecommendations.length}}
 
-        <div id="codecool-logo"></div>
+        <h2>Interesting Things About Me</h2>
+        <p>{{aboutMe}}</p>
+
+        <div id="footer">
+            <div id="codecool-logo"></div>
+        </div>
     </div>
 </body>
 

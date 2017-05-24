@@ -4,10 +4,11 @@ var mu = require('mu2');
 var pdf = require('html-pdf');
 var fs = require('fs');
 var templateDir = './template/';
-var css = fs.readFileSync(templateDir + 'template.css', 'utf-8');
-
+var css_color = fs.readFileSync(templateDir + 'template.css', 'utf-8');
+var css_bw = fs.readFileSync(templateDir + 'templateblackwhite.css', 'utf-8');
 var app = express();
 app.use(bodyParser.json());
+
 
 /** CORS CONFIGURATION */
 app.use(function(req, res, next) {
@@ -24,18 +25,21 @@ app.use(function(req, res, next) {
 	}
 });
 
+
 app.post('/', function(req, res) {
-
 	var student = req.body;
-	student.css = css;
-
-	student.hardSkills = extractSkillsByType('HARD', student.skillSet);
-    student.softSkills = extractSkillsByType('SOFT', student.skillSet);
-
-    if(student.socialNetworks && student.socialNetworks.length > 0) {
-		student.gitHub = createGitHubDataObject(student);
-		student.linkedIn = createLinkedInDataObject(student);
+    student.css = css_color;
+	if (student.printerFriendly) {
+        student.css = css_bw;
 	}
+    student.softSkills = extractSkillsByType('0', student.skillSet);
+    student.hardSkills = extractSkillsByType('1', student.skillSet);
+    student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
+	student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
+	student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
+	student.educations.sort(compare);
+	student.workExperiences.sort(compare);
+	student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -51,6 +55,43 @@ app.post('/', function(req, res) {
 	});
 });
 
+
+/**
+ * Extract languages and generate abbreviations:
+ * HARD / SOFT.
+ * @param language
+ * @returns {Array}
+ */
+var extractLanguagesByLanguageName = function (language) {
+	var result = [];
+	for (var i = 0; i < language.length; i++) {
+        if (language[i].level !== 'NATIVE') {
+            var element = {languageName: "", abbreviation: ""};
+            element.languageName = language[i].languageName.toLowerCase();
+            if (language[i].languageName === 'ENGLISH') {
+            	element.abbreviation = 'gb';
+			} else if (language[i].languageName === 'GERMAN') {
+                element.abbreviation = 'de';
+            } else if (language[i].languageName === 'SPANISH') {
+                element.abbreviation = 'es';
+            } else if (language[i].languageName === 'HUNGARIAN') {
+                element.abbreviation = 'hu';
+            } else if (language[i].languageName === 'POLISH') {
+                element.abbreviation = 'pl';
+            } else if (language[i].languageName === 'FRENCH') {
+                element.abbreviation = 'fr';
+            } else if (language[i].languageName === 'ITALIAN') {
+                element.abbreviation = 'it';
+            } else if (language[i].languageName === 'SLOVAKIAN') {
+                element.abbreviation = 'sk';
+            }
+			result.push(element);
+		}
+	}
+	return result;
+};
+
+
 /**
  * Extract skills from the set, by type:
  * HARD / SOFT.
@@ -60,9 +101,6 @@ app.post('/', function(req, res) {
  */
 var extractSkillsByType = function (type, skills) {
     var result = [];
-    if(skills === undefined){
-    	return result;
-	}
     for (var i = 0; i < skills.length; i++) {
         if (skills[i].type === type) {
             result.push(skills[i]);
@@ -71,89 +109,76 @@ var extractSkillsByType = function (type, skills) {
     return result;
 };
 
+
 /**
- * Extract GitHub URL by key from the socialnetwork data.
+ * Generates an object based on a social network name and a given array:
+ * input strs: 'GITHUB' || 'LINKEDIN'
+ * @param networkName
  * @param socialNetworks
- * @returns '#' - to act as href value or the url itself.
+ * @returns {Object}
  */
-var extractGitHubUrl = function (socialNetworks) {
-	var result = "#";
-	if(socialNetworks === undefined){
-		return result;
-	}
-	for (var i = 0; i < socialNetworks.length; i++) {
-		if (socialNetworks[i].title === "GITHUB") {
-			result = socialNetworks[i].url;
-		}
-	}
-	return result;
+var createSocialNetworkObject = function (networkName, socialNetworks) {
+    var result = {name: "N/A", url: "#"};
+    if(socialNetworks === undefined){
+        return result;
+    }
+    for (var i = 0; i < socialNetworks.length; i++) {
+        if (socialNetworks[i].title === networkName) {
+            result.name = socialNetworks[i].name;
+            result.url = socialNetworks[i].url;
+        }
+    }
+    return result;
 };
 
-/**
- * Extract LinkedIn URL by key from the socialnetwork data.
- * @param socialNetworks
- * @returns '#' - to act as href value or the url itself.
- */
-var extractLinkedInUrl = function (socialNetworks) {
-	var result = "#";
-	if(socialNetworks === undefined){
-		return result;
-	}
-	for (var i = 0; i < socialNetworks.length; i++) {
-		if (socialNetworks[i].title === "LINKEDIN") {
-			result = socialNetworks[i].url;
-		}
-	}
-	return result;
-};
 
 /**
- * Extract the short part (after the / ) from a GitHub link.
- * @param url
- * @returns {*}
+ * Generates a prettified birthday string:
+ * Example: YYYY-MM-DD -> DD MONTH YYYY
+ * @param birthday
+ * @returns {String}
  */
-var extractGitHubShort = function (url) {
-	var chopped = url.split("/");
-	if (chopped[chopped.length - 1] === "") {
-		return result = chopped[chopped.length - 2];
-	}
-	return result = chopped[chopped.length - 1];
+var prettifyBirthday = function (birthday) {
+	var chunks = birthday.split('-');
+	var year = parseInt(chunks[0]);
+	var month = parseInt(chunks[1]);
+	var day = parseInt(chunks[2]);
+	if (month === 1) {
+		month = 'January'
+	} else if (month === 2) {
+        month = 'February'
+	} else if (month === 3) {
+        month = 'March'
+    } else if (month === 4) {
+        month = 'April'
+    } else if (month === 5) {
+        month = 'May'
+    } else if (month === 6) {
+        month = 'June'
+    } else if (month === 7) {
+        month = 'July'
+    } else if (month === 8) {
+        month = 'August'
+    } else if (month === 9) {
+        month = 'September'
+    } else if (month === 10) {
+        month = 'October'
+    } else if (month === 11) {
+        month = 'November'
+    } else if (month === 12) {
+        month = 'December'
+    }
+	return day + ' ' + month + ' ' + year;
 };
 
-/**
- * Creates GitHub content holder object, or returns undefined
- * if no GitHub url was provided. Needed to be able to hide the
- * section with Mustache if missing.
- * @param student
- * @returns {*}
- */
-var createGitHubDataObject = function(student){
-	var url = extractGitHubUrl(student.socialNetworks);
-	if(url && url !== '#'){
-		return {
-			url: url,
-			short: extractGitHubShort(url)
-		};
-	}
-	return undefined;
+
+var compare = function (a, b) {
+    if (a.started > b.started)
+        return -1;
+    if (a.started < b.started)
+        return 1;
+    return 0;
 };
 
-/**
- * Creates LinkedIn content holder object, or returns undefined
- * if no LinkedIn url was provided. Needed to be able to hide the
- * section with Mustache if missing.
- * @param student
- * @returns {*}
- */
-var createLinkedInDataObject = function(student){
-	var url = extractLinkedInUrl(student.socialNetworks);
-	if(url && url !== '#'){
-		return {
-			url: url,
-			name: student.personalInfo.firstName + ' ' + student.personalInfo.lastName
-		};
-	}
-	return undefined;
-};
 
 app.listen(8080);
