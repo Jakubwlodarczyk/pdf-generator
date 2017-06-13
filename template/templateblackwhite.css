@@ -50,7 +50,7 @@ small {
     background-size: cover;
 }
 
-#name {
+.firstname {
     font-size: 13pt;
     font-weight: bold;
     margin-top: 12pt;
@@ -58,7 +58,11 @@ small {
     text-align: center;
 }
 
-#lastname {
+.firstname-longname {
+    font-size: 9pt;
+}
+
+.lastname {
     text-transform: uppercase;
 }
 
