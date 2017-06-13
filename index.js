@@ -85,7 +85,7 @@ var extractLanguagesByLanguageName = function (language) {
             } else if (language[i].languageName === 'SLOVAKIAN') {
                 element.abbreviation = 'sk';
             }
-            element.active = language[i].active ? ", Active" : "";
+            element.active = language[i].active ? " / Active" : "";
             element.level = getLevelStrById(language[i].level);
 			result.push(element);
 		}
