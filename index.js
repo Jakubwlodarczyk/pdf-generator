@@ -65,8 +65,8 @@ app.post('/', function(req, res) {
 var extractLanguagesByLanguageName = function (language) {
 	var result = [];
 	for (var i = 0; i < language.length; i++) {
-        if (language[i].level !== 'NATIVE') {
-            var element = {languageName: "", abbreviation: ""};
+        if (language[i].level !== '5') {
+            var element = {languageName: "", abbreviation: "", level: 0, active: false};
             element.languageName = language[i].languageName.toLowerCase();
             if (language[i].languageName === 'ENGLISH') {
             	element.abbreviation = 'gb';
@@ -85,12 +85,45 @@ var extractLanguagesByLanguageName = function (language) {
             } else if (language[i].languageName === 'SLOVAKIAN') {
                 element.abbreviation = 'sk';
             }
+            element.active = language[i].active;
+            element.level = getLevelStrById(language[i].level);
 			result.push(element);
 		}
 	}
+	console.log(JSON.stringify(result));
 	return result;
 };
 
+
+/**
+ * Returns the string representation of a language level:
+ * @param id
+ * @returns {String}
+ */
+var getLevelStrById = function (id) {
+    var result = "";
+    switch (id) {
+        case "0":
+            result = "Basic";
+            break;
+        case "1":
+            result = "Lower Intermediate";
+            break;
+        case "2":
+            result = "Upper Intermediate";
+            break;
+        case "3":
+            result = "Intermediate";
+            break;
+        case "4":
+            result = "Advanced";
+            break;
+        case "5":
+            result = "Native";
+            break;
+    }
+    return result;
+};
 
 /**
  * Extract skills from the set, by type:

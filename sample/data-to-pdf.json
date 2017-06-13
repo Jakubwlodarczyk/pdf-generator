@@ -10,23 +10,27 @@
    "spokenLanguages":[
       {
          "languageName":"ENGLISH",
-         "level":"HIGH_INTERMEDIATE",
-         "visibleOnPDF":true
+         "visibleOnPDF":true,
+         "level": "5",
+         "active": true
       },
       {
          "languageName":"GERMAN",
-         "level":"LOW_INTERMEDIATE",
-         "visibleOnPDF":true
+         "visibleOnPDF":true,
+         "level": "4",
+         "active": true
       },
       {
          "languageName":"HUNGARIAN",
-         "level":"NATIVE",
-         "visibleOnPDF":true
+         "level": "3",
+         "visibleOnPDF":true,
+         "active": true
       },
       {
          "languageName":"SLOVAKIAN",
-         "level":"ADVANCED",
-         "visibleOnPDF":true
+         "level":"1",
+         "visibleOnPDF":true,
+         "active": false
       }
    ],
    "mentorOpinions":[
