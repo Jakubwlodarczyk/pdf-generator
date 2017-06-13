@@ -11,26 +11,20 @@
       {
          "languageName":"ENGLISH",
          "visibleOnPDF":true,
-         "level": "5",
+         "level": "2",
          "active": true
       },
       {
          "languageName":"GERMAN",
          "visibleOnPDF":true,
-         "level": "4",
-         "active": true
+         "level": "3",
+         "active": false
       },
       {
          "languageName":"HUNGARIAN",
-         "level": "3",
+         "level": "5",
          "visibleOnPDF":true,
          "active": true
-      },
-      {
-         "languageName":"SLOVAKIAN",
-         "level":"1",
-         "visibleOnPDF":true,
-         "active": false
       }
    ],
    "mentorOpinions":[

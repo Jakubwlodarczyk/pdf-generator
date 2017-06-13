@@ -89,7 +89,7 @@ small {
 }
 
 #left-column-middle h2:first-of-type {
-    padding-top: 16pt;
+    padding-top: 9pt;
 }
 
 #left-column-bottom {
@@ -121,12 +121,18 @@ small {
 
 .flaggy {
     font-size: 11px;
-    top: 1px;
+    top: 5px;
     margin-left: -2px;
     position: relative;
     padding-right: 3pt;
     margin-right: 3pt;
     border-radius: 2px;
+}
+
+.language-details {
+    display: block;
+    font-size: 4.4pt;
+    margin-left: 17pt;
 }
 
 .languageName {

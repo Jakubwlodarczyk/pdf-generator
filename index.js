@@ -85,7 +85,7 @@ var extractLanguagesByLanguageName = function (language) {
             } else if (language[i].languageName === 'SLOVAKIAN') {
                 element.abbreviation = 'sk';
             }
-            element.active = language[i].active;
+            element.active = language[i].active ? ", Active" : "";
             element.level = getLevelStrById(language[i].level);
 			result.push(element);
 		}
@@ -93,7 +93,6 @@ var extractLanguagesByLanguageName = function (language) {
 	console.log(JSON.stringify(result));
 	return result;
 };
-
 
 /**
  * Returns the string representation of a language level:

@@ -28,7 +28,8 @@
             <h2>Spoken Languages</h2>
             <div class="contact-elements">
                 {{#spokenLanguages}}
-                <p><span class="flaggy flag-icon flag-icon-{{abbreviation}}"></span>&nbsp;<span class="languageName">{{languageName}}</span></p>
+                <p><span class="flaggy flag-icon flag-icon-{{abbreviation}}"></span>&nbsp;<span class="languageName">{{languageName}}</span>
+                    <span class="language-details">{{level}}{{active}}</span></p>
                 {{/spokenLanguages}}
             </div>
 
