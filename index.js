@@ -40,6 +40,7 @@ app.post('/', function(req, res) {
 	student.educations.sort(compare);
 	student.workExperiences.sort(compare);
 	student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
+	student.firstnameLongname = injectCSSClass(student.personalInfo.firstName, student.personalInfo.lastName);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -54,6 +55,17 @@ app.post('/', function(req, res) {
     	});
 	});
 });
+
+/**
+ * Returns a css class name or an empty str which will be used in the logicless template
+ * @param firstName
+ * @returns {String}
+ */
+var injectCSSClass = function (firstName, lastName) {
+    var total = (firstName.length + lastName.length);
+    console.log("len", total, firstName, lastName);
+    return total > 15 ? "firstname-longname" : "";
+};
 
 
 /**

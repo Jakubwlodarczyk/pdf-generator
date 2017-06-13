@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400i,600,600i|Montserrat:300,800');
-@import url("https://npmcdn.com/jquery-gray@1.5.0/css/gray.min.css");
 html, body {
     font-family: 'Montserrat', sans-serif;
     font-size: 6pt;
@@ -24,7 +23,7 @@ h2 {
 }
 
 small {
-    color: #444;
+    color: #000;
 }
 
 #left-column {
@@ -76,7 +75,6 @@ small {
     padding: 0 18pt;
 }
 
-
 .longtext-sidebar {
     font-family: 'Crimson Text', serif;
     font-size: 7.2pt;
@@ -89,8 +87,12 @@ small {
     margin-bottom: 0;
 }
 
+#left-column-middle p {
+    margin-top: 5px;
+}
+
 #left-column-middle h2:first-of-type {
-    padding-top: 16pt;
+    padding-top: 4pt;
 }
 
 #left-column-bottom {
@@ -99,8 +101,8 @@ small {
     width: 30%;
 }
 
-#left-column-bottom p {
-
+#left-column-bottom p:first-of-type {
+    margin-top: -2px;
 }
 
 #left-column-bottom .fa {
@@ -122,12 +124,18 @@ small {
 
 .flaggy {
     font-size: 11px;
-    top: 1px;
+    top: 5px;
     margin-left: -2px;
     position: relative;
     padding-right: 3pt;
     margin-right: 3pt;
     border-radius: 2px;
+}
+
+.language-details {
+    display: block;
+    font-size: 4.5pt;
+    margin-left: 17pt;
 }
 
 .languageName {
