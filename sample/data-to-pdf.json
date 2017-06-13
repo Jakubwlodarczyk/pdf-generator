@@ -1,7 +1,7 @@
 {
    "personalInfo":{
-      "firstName":"Balázs",
-      "lastName":"Pekár",
+      "firstName":"Róbert",
+      "lastName":"Kohányics",
       "birthDate":"1987-07-06",
       "gender":"FEMALE",
       "email":"balazs.pekar@codecool.com",
@@ -10,23 +10,21 @@
    "spokenLanguages":[
       {
          "languageName":"ENGLISH",
-         "level":"HIGH_INTERMEDIATE",
-         "visibleOnPDF":true
+         "visibleOnPDF":true,
+         "level": "2",
+         "active": true
       },
       {
          "languageName":"GERMAN",
-         "level":"LOW_INTERMEDIATE",
-         "visibleOnPDF":true
+         "visibleOnPDF":true,
+         "level": "3",
+         "active": false
       },
       {
          "languageName":"HUNGARIAN",
-         "level":"NATIVE",
-         "visibleOnPDF":true
-      },
-      {
-         "languageName":"SLOVAKIAN",
-         "level":"ADVANCED",
-         "visibleOnPDF":true
+         "level": "5",
+         "visibleOnPDF":true,
+         "active": false
       }
    ],
    "mentorOpinions":[
@@ -232,5 +230,5 @@
    "freeTextSkill":"Sausage hamburger swine, beef burger, chopped pork. Leberkas ham doner cupim chuck pork chop. Burgdoggen ham tongue cupim pastrami frankfurter bilton.",
    "mainInterests":"Main dolor sit amet, consectetur, adipiscing velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laby really est.",
    "aboutMe":"Bacon ipsum dolor amet alcatra hamburger tail jowl kielbasa sirloin ham beef salami venison rump ground round. Pork belly picanha ham hock spare ribs short ribs. Spare ribs meatball sirloin pork loin jerky. Meatball burgdoggen pancetta, shoulder tongue pork ribeye boudin corned beef jowwy bressaola.",
-   "printerFriendly":false
+   "printerFriendly":true
 }

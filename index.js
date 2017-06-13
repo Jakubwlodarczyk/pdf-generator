@@ -40,6 +40,7 @@ app.post('/', function(req, res) {
 	student.educations.sort(compare);
 	student.workExperiences.sort(compare);
 	student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
+	student.firstnameLongname = injectCSSClass(student.personalInfo.firstName, student.personalInfo.lastName);
 
 	var html = "";
 	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
@@ -55,6 +56,17 @@ app.post('/', function(req, res) {
 	});
 });
 
+/**
+ * Returns a css class name or an empty str which will be used in the logicless template
+ * @param firstName
+ * @returns {String}
+ */
+var injectCSSClass = function (firstName, lastName) {
+    var total = (firstName.length + lastName.length);
+    console.log("len", total, firstName, lastName);
+    return total > 15 ? "firstname-longname" : "";
+};
+
 
 /**
  * Extract languages and generate abbreviations:
@@ -65,8 +77,8 @@ app.post('/', function(req, res) {
 var extractLanguagesByLanguageName = function (language) {
 	var result = [];
 	for (var i = 0; i < language.length; i++) {
-        if (language[i].level !== 'NATIVE') {
-            var element = {languageName: "", abbreviation: ""};
+        if (language[i].level !== '5') {
+            var element = {languageName: "", abbreviation: "", level: 0, active: false};
             element.languageName = language[i].languageName.toLowerCase();
             if (language[i].languageName === 'ENGLISH') {
             	element.abbreviation = 'gb';
@@ -85,12 +97,44 @@ var extractLanguagesByLanguageName = function (language) {
             } else if (language[i].languageName === 'SLOVAKIAN') {
                 element.abbreviation = 'sk';
             }
+            element.active = language[i].active ? " / Active" : "";
+            element.level = getLevelStrById(language[i].level);
 			result.push(element);
 		}
 	}
+	console.log(JSON.stringify(result));
 	return result;
 };
 
+/**
+ * Returns the string representation of a language level:
+ * @param id
+ * @returns {String}
+ */
+var getLevelStrById = function (id) {
+    var result = "";
+    switch (id) {
+        case "0":
+            result = "Basic";
+            break;
+        case "1":
+            result = "Lower Intermediate";
+            break;
+        case "2":
+            result = "Upper Intermediate";
+            break;
+        case "3":
+            result = "Intermediate";
+            break;
+        case "4":
+            result = "Advanced";
+            break;
+        case "5":
+            result = "Native";
+            break;
+    }
+    return result;
+};
 
 /**
  * Extract skills from the set, by type:

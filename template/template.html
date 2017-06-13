@@ -14,7 +14,7 @@
     <div id="left-column">
         <div id="left-column-top">
             <div id="avatar" style="background-image: url('{{profilePicture}}')"></div>
-            <p id="name">{{personalInfo.firstName}} <span id="lastname">{{personalInfo.lastName}}</span></p>
+            <p class="firstname {{firstnameLongname}}">{{personalInfo.firstName}} <span class="lastname">{{personalInfo.lastName}}</span></p>
             <p id="date-of-birth">{{prettifiedBirthday}}</p>
         </div>
         <div id="left-column-middle">
@@ -28,7 +28,8 @@
             <h2>Spoken Languages</h2>
             <div class="contact-elements">
                 {{#spokenLanguages}}
-                <p><span class="flaggy flag-icon flag-icon-{{abbreviation}}"></span>&nbsp;<span class="languageName">{{languageName}}</span></p>
+                <p><span class="flaggy flag-icon flag-icon-{{abbreviation}}"></span>&nbsp;<span class="languageName">{{languageName}}</span>
+                    <span class="language-details">{{level}} <b>{{active}}</b></span></p>
                 {{/spokenLanguages}}
             </div>
 
