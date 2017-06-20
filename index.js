@@ -9,6 +9,10 @@ var app = express();
 app.use(bodyParser.json());
 
 const config = {
+    longName: {
+        length: 15,
+        'css-class': 'longname'
+    },
     path:{
         css: {
             color: templateDir + 'template.css',
@@ -96,12 +100,11 @@ app.get('/', function (req, res) {
 /**
  * Returns a css class name or an empty str which will be used in the logicless template
  * @param firstName
+ * @param lastName
  * @returns {String}
  */
-var injectCSSClass = function (firstName, lastName) {
-    var total = (firstName.length + lastName.length);
-    console.log("len", total, firstName, lastName);
-    return total > 15 ? "firstname-longname" : "";
+let injectCSSClass = (firstName, lastName)  => {
+    return (firstName.length + lastName.length) >= config.longName.length ? config.longName['css-class'] : '';
 };
 
 /**
