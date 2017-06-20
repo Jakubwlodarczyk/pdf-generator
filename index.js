@@ -5,12 +5,16 @@ var pdf = require('html-pdf');
 var fs = require('fs');
 var _ = require('lodash');
 var templateDir = './template/';
-var css_color = fs.readFileSync(templateDir + 'template.css', 'utf-8');
-var css_bw = fs.readFileSync(templateDir + 'templateblackwhite.css', 'utf-8');
 var app = express();
 app.use(bodyParser.json());
 
 const config = {
+    path:{
+        css: {
+            color: templateDir + 'template.css',
+            bw: templateDir + 'templateblackwhite.css'
+        }
+    },
     language: {
         showNative: true,
         levels: {
@@ -50,34 +54,32 @@ app.use(function (req, res, next) {
     }
 });
 
-var handleProfileRequest = function (req, res, justRenderHTML) {
-    var student = req.body;
-    student.css = css_color;
-    if (student.printerFriendly) {
-        student.css = css_bw;
-    }
-    student.softSkills = extractSkillsByType('0', student.skillSet);
-    student.hardSkills = extractSkillsByType('1', student.skillSet);
+let handleProfileRequest = (req, res, justRenderHTML) => {
+    let student = req.body;
+    student.css = fs.readFileSync(student.printerFriendly ? config.path.css.bw : config.path.css.color, 'utf-8');
+
+    student.softSkills = _.filter(student.skillSet, {type: '0'});
+    student.hardSkills = _.filter(student.skillSet, {type: '1'});
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
     student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
     student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
-    student.educations.sort(compare);
-    student.workExperiences.sort(compare);
+    student.educations = _.reverse(_.sortBy(student.educations, ['started']));
+    student.workExperiences = _.reverse(_.sortBy(student.workExperiences, ['started']));
     student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
     student.firstnameLongname = injectCSSClass(student.personalInfo.firstName, student.personalInfo.lastName);
 
-    var html = "";
-    var emitter = mu.compileAndRender(templateDir + 'template.html', student);
+    let html = "";
+    let emitter = mu.compileAndRender(templateDir + 'template.html', student);
 
-    emitter.on('data', function (data) {
+    emitter.on('data', (data) => {
         html += data.toString();
     });
 
-    emitter.on('end', function () {
+    emitter.on('end', () => {
         if (justRenderHTML === true) {
             res.send(html);
         } else {
-            pdf.create(html).toBuffer(function (err, buffer) {
+            pdf.create(html).toBuffer((err, buffer) => {
                 res.send(buffer);
             });
         }
@@ -108,7 +110,7 @@ var injectCSSClass = function (firstName, lastName) {
  * @param languages
  * @returns {Array}
  */
-let extractLanguagesByLanguageName = function (languages) {
+let extractLanguagesByLanguageName = (languages) => {
     return _.filter(_.map(languages, (language) => {
         if (language.level === 'NATIVE' && !config.language.showNative) {
             return; // skip this
@@ -122,24 +124,6 @@ let extractLanguagesByLanguageName = function (languages) {
         }
     }), undefined); // Filter skipped undefined language settings
 };
-
-/**
- * Extract skills from the set, by type:
- * HARD / SOFT.
- * @param type
- * @param skills
- * @returns {Array}
- */
-var extractSkillsByType = function (type, skills) {
-    var result = [];
-    for (var i = 0; i < skills.length; i++) {
-        if (skills[i].type === type) {
-            result.push(skills[i]);
-        }
-    }
-    return result;
-};
-
 
 /**
  * Generates an object based on a social network name and a given array:
@@ -170,22 +154,13 @@ const monthList = ["January", "February", "March", "April", "May", "June", "July
  * @param birthday
  * @returns {String}
  */
-let prettifyBirthday = function (birthday) {
+let prettifyBirthday = (birthday) => {
     let chunks = birthday.split('-');
     let day = chunks[2];
     let month = monthList[parseInt(chunks[1]) - 1];
     let year = chunks[0];
 
     return `${day} ${month} ${year}`;
-};
-
-
-var compare = function (a, b) {
-    if (a.started > b.started)
-        return -1;
-    if (a.started < b.started)
-        return 1;
-    return 0;
 };
 
 
