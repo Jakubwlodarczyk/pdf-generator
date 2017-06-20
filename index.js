@@ -3,11 +3,36 @@ var bodyParser = require('body-parser');
 var mu = require('mu2');
 var pdf = require('html-pdf');
 var fs = require('fs');
+var _ = require('lodash');
 var templateDir = './template/';
 var css_color = fs.readFileSync(templateDir + 'template.css', 'utf-8');
 var css_bw = fs.readFileSync(templateDir + 'templateblackwhite.css', 'utf-8');
 var app = express();
 app.use(bodyParser.json());
+
+const config = {
+    language: {
+        showNative: true,
+        levels: {
+            BASIC: 'Basic',
+            LOW_INTERMEDIATE: 'Lower Intermediate',
+            HIGH_INTERMEDIATE: 'Upper Intermediate',
+            INTERMEDIATE: 'Intermediate',
+            ADVANCED: 'Advanced',
+            NATIVE: 'Native'
+        },
+        codes: {
+            ENGLISH: 'gb',
+            GERMAN: 'de',
+            SPANISH: 'es',
+            HUNGARIAN: 'hu',
+            POLISH: 'pl',
+            FRENCH: 'fr',
+            ITALIAN: 'it',
+            SLOVAKIAN: 'sk'
+        }
+    }
+};
 
 
 /** CORS CONFIGURATION */
@@ -77,73 +102,25 @@ var injectCSSClass = function (firstName, lastName) {
     return total > 15 ? "firstname-longname" : "";
 };
 
-
 /**
  * Extract languages and generate abbreviations:
  * HARD / SOFT.
- * @param language
+ * @param languages
  * @returns {Array}
  */
-var extractLanguagesByLanguageName = function (language) {
-    var result = [];
-    for (var i = 0; i < language.length; i++) {
-        if (language[i].level !== '5') {
-            var element = {languageName: "", abbreviation: "", level: 0, active: false};
-            element.languageName = language[i].languageName.toLowerCase();
-            if (language[i].languageName === 'ENGLISH') {
-                element.abbreviation = 'gb';
-            } else if (language[i].languageName === 'GERMAN') {
-                element.abbreviation = 'de';
-            } else if (language[i].languageName === 'SPANISH') {
-                element.abbreviation = 'es';
-            } else if (language[i].languageName === 'HUNGARIAN') {
-                element.abbreviation = 'hu';
-            } else if (language[i].languageName === 'POLISH') {
-                element.abbreviation = 'pl';
-            } else if (language[i].languageName === 'FRENCH') {
-                element.abbreviation = 'fr';
-            } else if (language[i].languageName === 'ITALIAN') {
-                element.abbreviation = 'it';
-            } else if (language[i].languageName === 'SLOVAKIAN') {
-                element.abbreviation = 'sk';
-            }
-            element.active = language[i].active ? " / Active" : "";
-            element.level = getLevelStrById(language[i].level);
-            result.push(element);
+let extractLanguagesByLanguageName = function (languages) {
+    return _.filter(_.map(languages, (language) => {
+        if (language.level === 'NATIVE' && !config.language.showNative) {
+            return; // skip this
         }
-    }
-    console.log(JSON.stringify(result));
-    return result;
-};
 
-/**
- * Returns the string representation of a language level:
- * @param id
- * @returns {String}
- */
-var getLevelStrById = function (id) {
-    var result = "";
-    switch (id) {
-        case "0":
-            result = "Basic";
-            break;
-        case "1":
-            result = "Lower Intermediate";
-            break;
-        case "2":
-            result = "Upper Intermediate";
-            break;
-        case "3":
-            result = "Intermediate";
-            break;
-        case "4":
-            result = "Advanced";
-            break;
-        case "5":
-            result = "Native";
-            break;
-    }
-    return result;
+        return {
+            languageName: _.capitalize(language.languageName) || '',
+            abbreviation: config.language.codes[language.languageName.toUpperCase()],
+            level: config.language.levels[language.level] || '',
+            active: language.active ? " / Active" : ""
+        }
+    }), undefined); // Filter skipped undefined language settings
 };
 
 /**
