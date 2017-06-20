@@ -89,7 +89,7 @@ let handleProfileRequest = (req, res, justRenderHTML) => {
 app.post('/', handleProfileRequest);
 
 app.get('/', function (req, res) {
-    req.body = JSON.parse(fs.readFileSync('sample/sample-student.json'));
+    req.body = JSON.parse(fs.readFileSync('sample/sample-student-1.json'));
     handleProfileRequest(req, res, true);
 });
 
