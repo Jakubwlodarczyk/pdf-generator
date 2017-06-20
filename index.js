@@ -132,18 +132,12 @@ let extractLanguagesByLanguageName = (languages) => {
  * @param socialNetworks
  * @returns {Object}
  */
-var createSocialNetworkObject = function (networkName, socialNetworks) {
-    var result = {name: "N/A", url: "#"};
-    if (socialNetworks === undefined) {
-        return result;
-    }
-    for (var i = 0; i < socialNetworks.length; i++) {
-        if (socialNetworks[i].title === networkName) {
-            result.name = socialNetworks[i].name;
-            result.url = socialNetworks[i].url;
-        }
-    }
-    return result;
+let createSocialNetworkObject = (networkName, socialNetworks) => {
+    let missingNetwork = {
+        name: 'N/A',
+        url: '#'
+    };
+    return _.find(socialNetworks, {title: networkName}) || missingNetwork;
 };
 
 
