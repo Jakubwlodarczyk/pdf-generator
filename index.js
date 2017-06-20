@@ -11,49 +11,59 @@ app.use(bodyParser.json());
 
 
 /** CORS CONFIGURATION */
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Credentials', 'true');
-	res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-	res.header('Access-Control-Expose-Headers', 'Content-Length');
-	res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
-	if (req.method === 'OPTIONS') {
-		return res.sendStatus(200);
-	} else {
-		return next();
-	}
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+    res.header('Access-Control-Expose-Headers', 'Content-Length');
+    res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+    } else {
+        return next();
+    }
 });
 
-
-app.post('/', function(req, res) {
-	var student = req.body;
+var handleProfileRequest = function (req, res, justRenderHTML) {
+    var student = req.body;
     student.css = css_color;
-	if (student.printerFriendly) {
+    if (student.printerFriendly) {
         student.css = css_bw;
-	}
+    }
     student.softSkills = extractSkillsByType('0', student.skillSet);
     student.hardSkills = extractSkillsByType('1', student.skillSet);
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
-	student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
-	student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
-	student.educations.sort(compare);
-	student.workExperiences.sort(compare);
-	student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
-	student.firstnameLongname = injectCSSClass(student.personalInfo.firstName, student.personalInfo.lastName);
+    student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
+    student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
+    student.educations.sort(compare);
+    student.workExperiences.sort(compare);
+    student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
+    student.firstnameLongname = injectCSSClass(student.personalInfo.firstName, student.personalInfo.lastName);
 
-	var html = "";
-	var emitter = mu.compileAndRender(templateDir + 'template.html', student);
+    var html = "";
+    var emitter = mu.compileAndRender(templateDir + 'template.html', student);
 
-	emitter.on('data', function(data) {
-    	html += data.toString();
-	});
+    emitter.on('data', function (data) {
+        html += data.toString();
+    });
 
-	emitter.on('end', function () {
-	    pdf.create(html).toBuffer(function(err, buffer) {
-			res.send(buffer);
-    	});
-	});
+    emitter.on('end', function () {
+        if (justRenderHTML === true) {
+            res.send(html);
+        } else {
+            pdf.create(html).toBuffer(function (err, buffer) {
+                res.send(buffer);
+            });
+        }
+    });
+};
+
+app.post('/', handleProfileRequest);
+
+app.get('/', function (req, res) {
+    req.body = JSON.parse(fs.readFileSync('sample/sample-student.json'));
+    handleProfileRequest(req, res, true);
 });
 
 /**
@@ -75,14 +85,14 @@ var injectCSSClass = function (firstName, lastName) {
  * @returns {Array}
  */
 var extractLanguagesByLanguageName = function (language) {
-	var result = [];
-	for (var i = 0; i < language.length; i++) {
+    var result = [];
+    for (var i = 0; i < language.length; i++) {
         if (language[i].level !== '5') {
             var element = {languageName: "", abbreviation: "", level: 0, active: false};
             element.languageName = language[i].languageName.toLowerCase();
             if (language[i].languageName === 'ENGLISH') {
-            	element.abbreviation = 'gb';
-			} else if (language[i].languageName === 'GERMAN') {
+                element.abbreviation = 'gb';
+            } else if (language[i].languageName === 'GERMAN') {
                 element.abbreviation = 'de';
             } else if (language[i].languageName === 'SPANISH') {
                 element.abbreviation = 'es';
@@ -99,11 +109,11 @@ var extractLanguagesByLanguageName = function (language) {
             }
             element.active = language[i].active ? " / Active" : "";
             element.level = getLevelStrById(language[i].level);
-			result.push(element);
-		}
-	}
-	console.log(JSON.stringify(result));
-	return result;
+            result.push(element);
+        }
+    }
+    console.log(JSON.stringify(result));
+    return result;
 };
 
 /**
@@ -163,7 +173,7 @@ var extractSkillsByType = function (type, skills) {
  */
 var createSocialNetworkObject = function (networkName, socialNetworks) {
     var result = {name: "N/A", url: "#"};
-    if(socialNetworks === undefined){
+    if (socialNetworks === undefined) {
         return result;
     }
     for (var i = 0; i < socialNetworks.length; i++) {
@@ -183,15 +193,15 @@ var createSocialNetworkObject = function (networkName, socialNetworks) {
  * @returns {String}
  */
 var prettifyBirthday = function (birthday) {
-	var chunks = birthday.split('-');
-	var year = parseInt(chunks[0]);
-	var month = parseInt(chunks[1]);
-	var day = parseInt(chunks[2]);
-	if (month === 1) {
-		month = 'January'
-	} else if (month === 2) {
+    var chunks = birthday.split('-');
+    var year = parseInt(chunks[0]);
+    var month = parseInt(chunks[1]);
+    var day = parseInt(chunks[2]);
+    if (month === 1) {
+        month = 'January'
+    } else if (month === 2) {
         month = 'February'
-	} else if (month === 3) {
+    } else if (month === 3) {
         month = 'March'
     } else if (month === 4) {
         month = 'April'
@@ -212,7 +222,7 @@ var prettifyBirthday = function (birthday) {
     } else if (month === 12) {
         month = 'December'
     }
-	return day + ' ' + month + ' ' + year;
+    return day + ' ' + month + ' ' + year;
 };
 
 
