@@ -163,43 +163,20 @@ var createSocialNetworkObject = function (networkName, socialNetworks) {
 };
 
 
+const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 /**
  * Generates a prettified birthday string:
  * Example: YYYY-MM-DD -> DD MONTH YYYY
  * @param birthday
  * @returns {String}
  */
-var prettifyBirthday = function (birthday) {
-    var chunks = birthday.split('-');
-    var year = parseInt(chunks[0]);
-    var month = parseInt(chunks[1]);
-    var day = parseInt(chunks[2]);
-    if (month === 1) {
-        month = 'January'
-    } else if (month === 2) {
-        month = 'February'
-    } else if (month === 3) {
-        month = 'March'
-    } else if (month === 4) {
-        month = 'April'
-    } else if (month === 5) {
-        month = 'May'
-    } else if (month === 6) {
-        month = 'June'
-    } else if (month === 7) {
-        month = 'July'
-    } else if (month === 8) {
-        month = 'August'
-    } else if (month === 9) {
-        month = 'September'
-    } else if (month === 10) {
-        month = 'October'
-    } else if (month === 11) {
-        month = 'November'
-    } else if (month === 12) {
-        month = 'December'
-    }
-    return day + ' ' + month + ' ' + year;
+let prettifyBirthday = function (birthday) {
+    let chunks = birthday.split('-');
+    let day = chunks[2];
+    let month = monthList[parseInt(chunks[1]) - 1];
+    let year = chunks[0];
+
+    return `${day} ${month} ${year}`;
 };
 
 
