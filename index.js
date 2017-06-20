@@ -1,19 +1,18 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mu = require('mu2');
-var pdf = require('html-pdf');
-var fs = require('fs');
-var _ = require('lodash');
-var templateDir = './template/';
-var app = express();
-app.use(bodyParser.json());
+let express = require('express'),
+    bodyParser = require('body-parser'),
+    mu = require('mu2'),
+    pdf = require('html-pdf'),
+    fs = require('fs'),
+    _ = require('lodash'),
+    templateDir = './template/',
+    app = express();
 
 const config = {
     longName: {
         length: 15,
         'css-class': 'longname'
     },
-    path:{
+    path: {
         css: {
             color: templateDir + 'template.css',
             bw: templateDir + 'templateblackwhite.css'
@@ -43,19 +42,18 @@ const config = {
 };
 
 
+app.use(bodyParser.json());
+
 /** CORS CONFIGURATION */
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
 
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
     res.header('Access-Control-Expose-Headers', 'Content-Length');
     res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    } else {
-        return next();
-    }
+
+    return (req.method === 'OPTIONS') ? res.sendStatus(200) : next();
 });
 
 let handleProfileRequest = (req, res, justRenderHTML) => {
@@ -80,7 +78,7 @@ let handleProfileRequest = (req, res, justRenderHTML) => {
     });
 
     emitter.on('end', () => {
-        if (justRenderHTML === true) {
+        if (justRenderHTML) {
             res.send(html);
         } else {
             pdf.create(html).toBuffer((err, buffer) => {
@@ -92,8 +90,9 @@ let handleProfileRequest = (req, res, justRenderHTML) => {
 
 app.post('/', handleProfileRequest);
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     req.body = JSON.parse(fs.readFileSync('sample/sample-student-1.json'));
+
     handleProfileRequest(req, res, true);
 });
 
@@ -103,7 +102,7 @@ app.get('/', function (req, res) {
  * @param lastName
  * @returns {String}
  */
-let injectCSSClass = (firstName, lastName)  => {
+let injectCSSClass = (firstName, lastName) => {
     return (firstName.length + lastName.length) >= config.longName.length ? config.longName['css-class'] : '';
 };
 
@@ -140,6 +139,7 @@ let createSocialNetworkObject = (networkName, socialNetworks) => {
         name: 'N/A',
         url: '#'
     };
+
     return _.find(socialNetworks, {title: networkName}) || missingNetwork;
 };
 
@@ -159,6 +159,5 @@ let prettifyBirthday = (birthday) => {
 
     return `${day} ${month} ${year}`;
 };
-
 
 app.listen(8080);
