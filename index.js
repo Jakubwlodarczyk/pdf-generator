@@ -1,58 +1,87 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mu = require('mu2');
-var pdf = require('html-pdf');
-var fs = require('fs');
-var templateDir = './template/';
-var css_color = fs.readFileSync(templateDir + 'template.css', 'utf-8');
-var css_bw = fs.readFileSync(templateDir + 'templateblackwhite.css', 'utf-8');
-var app = express();
+let express = require('express'),
+    bodyParser = require('body-parser'),
+    mu = require('mu2'),
+    pdf = require('html-pdf'),
+    fs = require('fs'),
+    _ = require('lodash'),
+    templateDir = './template/',
+    app = express();
+
+const config = {
+    longName: {
+        length: 15,
+        'css-class': 'longname'
+    },
+    path: {
+        css: {
+            color: templateDir + 'template.css',
+            bw: templateDir + 'templateblackwhite.css'
+        }
+    },
+    language: {
+        showNative: true,
+        levels: {
+            BASIC: 'Basic',
+            LOW_INTERMEDIATE: 'Lower Intermediate',
+            HIGH_INTERMEDIATE: 'Upper Intermediate',
+            INTERMEDIATE: 'Intermediate',
+            ADVANCED: 'Advanced',
+            NATIVE: 'Native'
+        },
+        codes: {
+            ENGLISH: 'gb',
+            GERMAN: 'de',
+            SPANISH: 'es',
+            HUNGARIAN: 'hu',
+            POLISH: 'pl',
+            FRENCH: 'fr',
+            ITALIAN: 'it',
+            SLOVAKIAN: 'sk'
+        }
+    }
+};
+
+
 app.use(bodyParser.json());
 
-
 /** CORS CONFIGURATION */
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
 
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
     res.header('Access-Control-Expose-Headers', 'Content-Length');
     res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(200);
-    } else {
-        return next();
-    }
+
+    return (req.method === 'OPTIONS') ? res.sendStatus(200) : next();
 });
 
-var handleProfileRequest = function (req, res, justRenderHTML) {
-    var student = req.body;
-    student.css = css_color;
-    if (student.printerFriendly) {
-        student.css = css_bw;
-    }
-    student.softSkills = extractSkillsByType('0', student.skillSet);
-    student.hardSkills = extractSkillsByType('1', student.skillSet);
+let handleProfileRequest = (req, res, justRenderHTML) => {
+    let student = req.body;
+    student.css = fs.readFileSync(student.printerFriendly ? config.path.css.bw : config.path.css.color, 'utf-8');
+
+    student.softSkills = _.filter(student.skillSet, {type: '0'});
+    student.hardSkills = _.filter(student.skillSet, {type: '1'});
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
     student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
     student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
-    student.educations.sort(compare);
-    student.workExperiences.sort(compare);
+    student.educations = _.reverse(_.sortBy(student.educations, ['started']));
+    student.workExperiences = _.reverse(_.sortBy(student.workExperiences, ['started']));
     student.prettifiedBirthday = prettifyBirthday(student.personalInfo.birthDate);
     student.firstnameLongname = injectCSSClass(student.personalInfo.firstName, student.personalInfo.lastName);
 
-    var html = "";
-    var emitter = mu.compileAndRender(templateDir + 'template.html', student);
+    let html = "";
+    let emitter = mu.compileAndRender(templateDir + 'template.html', student);
 
-    emitter.on('data', function (data) {
+    emitter.on('data', (data) => {
         html += data.toString();
     });
 
-    emitter.on('end', function () {
-        if (justRenderHTML === true) {
+    emitter.on('end', () => {
+        if (justRenderHTML) {
             res.send(html);
         } else {
-            pdf.create(html).toBuffer(function (err, buffer) {
+            pdf.create(html).toBuffer((err, buffer) => {
                 res.send(buffer);
             });
         }
@@ -61,108 +90,42 @@ var handleProfileRequest = function (req, res, justRenderHTML) {
 
 app.post('/', handleProfileRequest);
 
-app.get('/', function (req, res) {
-    req.body = JSON.parse(fs.readFileSync('sample/sample-student.json'));
+app.get('/', (req, res) => {
+    req.body = JSON.parse(fs.readFileSync('sample/sample-student-1.json'));
+
     handleProfileRequest(req, res, true);
 });
 
 /**
  * Returns a css class name or an empty str which will be used in the logicless template
  * @param firstName
+ * @param lastName
  * @returns {String}
  */
-var injectCSSClass = function (firstName, lastName) {
-    var total = (firstName.length + lastName.length);
-    console.log("len", total, firstName, lastName);
-    return total > 15 ? "firstname-longname" : "";
+let injectCSSClass = (firstName, lastName) => {
+    return (firstName.length + lastName.length) >= config.longName.length ? config.longName['css-class'] : '';
 };
-
 
 /**
  * Extract languages and generate abbreviations:
  * HARD / SOFT.
- * @param language
+ * @param languages
  * @returns {Array}
  */
-var extractLanguagesByLanguageName = function (language) {
-    var result = [];
-    for (var i = 0; i < language.length; i++) {
-        if (language[i].level !== '5') {
-            var element = {languageName: "", abbreviation: "", level: 0, active: false};
-            element.languageName = language[i].languageName.toLowerCase();
-            if (language[i].languageName === 'ENGLISH') {
-                element.abbreviation = 'gb';
-            } else if (language[i].languageName === 'GERMAN') {
-                element.abbreviation = 'de';
-            } else if (language[i].languageName === 'SPANISH') {
-                element.abbreviation = 'es';
-            } else if (language[i].languageName === 'HUNGARIAN') {
-                element.abbreviation = 'hu';
-            } else if (language[i].languageName === 'POLISH') {
-                element.abbreviation = 'pl';
-            } else if (language[i].languageName === 'FRENCH') {
-                element.abbreviation = 'fr';
-            } else if (language[i].languageName === 'ITALIAN') {
-                element.abbreviation = 'it';
-            } else if (language[i].languageName === 'SLOVAKIAN') {
-                element.abbreviation = 'sk';
-            }
-            element.active = language[i].active ? " / Active" : "";
-            element.level = getLevelStrById(language[i].level);
-            result.push(element);
+let extractLanguagesByLanguageName = (languages) => {
+    return _.filter(_.map(languages, (language) => {
+        if (language.level === 'NATIVE' && !config.language.showNative) {
+            return; // skip this
         }
-    }
-    console.log(JSON.stringify(result));
-    return result;
-};
 
-/**
- * Returns the string representation of a language level:
- * @param id
- * @returns {String}
- */
-var getLevelStrById = function (id) {
-    var result = "";
-    switch (id) {
-        case "0":
-            result = "Basic";
-            break;
-        case "1":
-            result = "Lower Intermediate";
-            break;
-        case "2":
-            result = "Upper Intermediate";
-            break;
-        case "3":
-            result = "Intermediate";
-            break;
-        case "4":
-            result = "Advanced";
-            break;
-        case "5":
-            result = "Native";
-            break;
-    }
-    return result;
-};
-
-/**
- * Extract skills from the set, by type:
- * HARD / SOFT.
- * @param type
- * @param skills
- * @returns {Array}
- */
-var extractSkillsByType = function (type, skills) {
-    var result = [];
-    for (var i = 0; i < skills.length; i++) {
-        if (skills[i].type === type) {
-            result.push(skills[i]);
+        return {
+            languageName: _.capitalize(language.languageName) || '',
+            abbreviation: config.language.codes[language.languageName.toUpperCase()],
+            level: config.language.levels[language.level] || '',
+            active: language.active ? " / Active" : ""
         }
-    }
-    return result;
+    }), undefined); // Filter skipped undefined language settings
 };
-
 
 /**
  * Generates an object based on a social network name and a given array:
@@ -171,68 +134,30 @@ var extractSkillsByType = function (type, skills) {
  * @param socialNetworks
  * @returns {Object}
  */
-var createSocialNetworkObject = function (networkName, socialNetworks) {
-    var result = {name: "N/A", url: "#"};
-    if (socialNetworks === undefined) {
-        return result;
-    }
-    for (var i = 0; i < socialNetworks.length; i++) {
-        if (socialNetworks[i].title === networkName) {
-            result.name = socialNetworks[i].name;
-            result.url = socialNetworks[i].url;
-        }
-    }
-    return result;
+let createSocialNetworkObject = (networkName, socialNetworks) => {
+    let missingNetwork = {
+        name: 'N/A',
+        url: '#'
+    };
+
+    return _.find(socialNetworks, {title: networkName}) || missingNetwork;
 };
 
 
+const monthList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 /**
  * Generates a prettified birthday string:
  * Example: YYYY-MM-DD -> DD MONTH YYYY
  * @param birthday
  * @returns {String}
  */
-var prettifyBirthday = function (birthday) {
-    var chunks = birthday.split('-');
-    var year = parseInt(chunks[0]);
-    var month = parseInt(chunks[1]);
-    var day = parseInt(chunks[2]);
-    if (month === 1) {
-        month = 'January'
-    } else if (month === 2) {
-        month = 'February'
-    } else if (month === 3) {
-        month = 'March'
-    } else if (month === 4) {
-        month = 'April'
-    } else if (month === 5) {
-        month = 'May'
-    } else if (month === 6) {
-        month = 'June'
-    } else if (month === 7) {
-        month = 'July'
-    } else if (month === 8) {
-        month = 'August'
-    } else if (month === 9) {
-        month = 'September'
-    } else if (month === 10) {
-        month = 'October'
-    } else if (month === 11) {
-        month = 'November'
-    } else if (month === 12) {
-        month = 'December'
-    }
-    return day + ' ' + month + ' ' + year;
+let prettifyBirthday = (birthday) => {
+    let chunks = birthday.split('-');
+    let day = chunks[2];
+    let month = monthList[parseInt(chunks[1]) - 1];
+    let year = chunks[0];
+
+    return `${day} ${month} ${year}`;
 };
-
-
-var compare = function (a, b) {
-    if (a.started > b.started)
-        return -1;
-    if (a.started < b.started)
-        return 1;
-    return 0;
-};
-
 
 app.listen(8080);
