@@ -13,4 +13,5 @@ node_modules/
 *.pdf
 *.zip
 
+.DS_Store
 package-lock.json

@@ -78,7 +78,7 @@ let handleProfileRequest = (req, res, justRenderHTML) => {
     });
 
     emitter.on('end', () => {
-        if (justRenderHTML) {
+        if (justRenderHTML === true) {
             res.send(html);
         } else {
             pdf.create(html).toBuffer((err, buffer) => {
