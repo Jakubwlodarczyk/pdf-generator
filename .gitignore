@@ -12,3 +12,5 @@ node_modules/
 *.log
 *.pdf
 *.zip
+
+package-lock.json
