@@ -36,7 +36,8 @@ const config = {
             POLISH: 'pl',
             FRENCH: 'fr',
             ITALIAN: 'it',
-            SLOVAKIAN: 'sk'
+            SLOVAKIAN: 'sk',
+            RUSSIAN: 'ru'
         }
     }
 };
