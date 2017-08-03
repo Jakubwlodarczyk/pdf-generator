@@ -15,7 +15,9 @@
         <div id="left-column-top">
             <div id="avatar" style="background-image: url('{{profilePicture}}')"></div>
             <p class="firstname {{firstnameLongname}}">{{personalInfo.firstName}} <span class="lastname">{{personalInfo.lastName}}</span></p>
+            {{#prettifiedBirthday}}
             <p id="date-of-birth">{{prettifiedBirthday}}</p>
+            {{/prettifiedBirthday}}
         </div>
         <div id="left-column-middle">
             <h2>Self Definition</h2>
