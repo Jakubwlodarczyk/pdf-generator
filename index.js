@@ -153,6 +153,9 @@ const monthList = ["January", "February", "March", "April", "May", "June", "July
  * @returns {String}
  */
 let prettifyBirthday = (birthday) => {
+    if(birthday === undefined){
+        return '';
+    }
     let chunks = birthday.split('-');
     let day = chunks[2];
     let month = monthList[parseInt(chunks[1]) - 1];
