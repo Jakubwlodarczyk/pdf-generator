@@ -1,2 +1,2 @@
 FROM node:8-onbuild
-EXPOSE 8080
+EXPOSE 9005

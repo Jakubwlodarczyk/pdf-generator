@@ -1,0 +1,23 @@
+stages:
+  - build
+  - deploy
+
+build_image:
+  stage: build
+  only: [master]
+  image: kovaron/nodejs7-builder
+  script:
+    - npm install
+
+deploy_image:
+  stage: deploy
+  only: [master]
+  image: ekino/docker-buildbox:latest-dind-aws
+  services:
+    - docker:dind
+  script:
+    - eval $(aws ecr get-login --no-include-email --region eu-central-1)
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker build -t student-profile-cv-pdf-generator .
+    - docker tag student-profile-cv-pdf-generator:latest 807560053962.dkr.ecr.eu-central-1.amazonaws.com/student-profile-cv-pdf-generator:latest
+    - docker push 807560053962.dkr.ecr.eu-central-1.amazonaws.com/student-profile-cv-pdf-generator:latest
