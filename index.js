@@ -37,7 +37,8 @@ const config = {
             FRENCH: 'fr',
             ITALIAN: 'it',
             SLOVAKIAN: 'sk',
-            RUSSIAN: 'ru'
+            RUSSIAN: 'ru',
+            JAPANESE: 'jp'
         }
     }
 };
