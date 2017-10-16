@@ -1,4 +1,4 @@
-let express = require('express'),
+var express = require('express'),
     bodyParser = require('body-parser'),
     mu = require('mu2'),
     pdf = require('html-pdf'),
@@ -38,7 +38,8 @@ const config = {
             ITALIAN: 'it',
             SLOVAKIAN: 'sk',
             RUSSIAN: 'ru',
-            JAPANESE: 'jp'
+            JAPANESE: 'jp',
+            VIETNAMESE: 'vn'
         }
     }
 };
@@ -48,22 +49,20 @@ app.use(bodyParser.json());
 
 /** CORS CONFIGURATION */
 app.use((req, res, next) => {
-
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
     res.header('Access-Control-Expose-Headers', 'Content-Length');
     res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
-
     return (req.method === 'OPTIONS') ? res.sendStatus(200) : next();
 });
 
 let handleProfileRequest = (req, res, justRenderHTML) => {
     let student = req.body;
     student.css = fs.readFileSync(student.printerFriendly ? config.path.css.bw : config.path.css.color, 'utf-8');
-
-    student.softSkills = _.filter(student.skillSet, {type: '0'});
-    student.hardSkills = _.filter(student.skillSet, {type: '1'});
+    
+    student.softSkills = _.filter(student.skillSet, {type: 0});
+    student.hardSkills = _.filter(student.skillSet, {type: 1});
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);
     student.github = createSocialNetworkObject('GITHUB', student.socialNetworks);
     student.linkedin = createSocialNetworkObject('LINKEDIN', student.socialNetworks);
