@@ -1,4 +1,4 @@
-var express = require('express'),
+let express = require('express'),
     bodyParser = require('body-parser'),
     mu = require('mu2'),
     pdf = require('html-pdf'),
@@ -60,7 +60,6 @@ app.use((req, res, next) => {
 let handleProfileRequest = (req, res, justRenderHTML) => {
     let student = req.body;
     student.css = fs.readFileSync(student.printerFriendly ? config.path.css.bw : config.path.css.color, 'utf-8');
-    
     student.softSkills = _.filter(student.skillSet, {type: 0});
     student.hardSkills = _.filter(student.skillSet, {type: 1});
     student.spokenLanguages = extractLanguagesByLanguageName(student.spokenLanguages);

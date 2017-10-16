@@ -12,7 +12,7 @@ build_image:
 deploy_image:
   stage: deploy
   only: [master]
-  image: ekino/docker-buildbox:latest-dind-aws
+  image: ekino/docker-buildbox:dind-aws-2017.07.17
   services:
     - docker:dind
   script:
