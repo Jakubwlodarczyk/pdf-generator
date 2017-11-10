@@ -39,7 +39,8 @@ const config = {
             SLOVAKIAN: 'sk',
             RUSSIAN: 'ru',
             JAPANESE: 'jp',
-            VIETNAMESE: 'vn'
+            VIETNAMESE: 'vn',
+            ROMANIAN: 'ro'
         }
     }
 };
