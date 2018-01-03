@@ -21,12 +21,12 @@ const config = {
     language: {
         showNative: true,
         levels: {
-            BASIC: 'Basic',
-            LOW_INTERMEDIATE: 'Lower Intermediate',
-            HIGH_INTERMEDIATE: 'Upper Intermediate',
-            INTERMEDIATE: 'Intermediate',
-            ADVANCED: 'Advanced',
-            NATIVE: 'Native'
+            0: 'Basic',
+            1: 'Lower Intermediate',
+            2: 'Upper Intermediate',
+            3: 'Intermediate',
+            4: 'Advanced',
+            5: 'Native'
         },
         codes: {
             ENGLISH: 'gb',
