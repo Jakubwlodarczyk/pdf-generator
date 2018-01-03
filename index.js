@@ -40,7 +40,8 @@ const config = {
             RUSSIAN: 'ru',
             JAPANESE: 'jp',
             VIETNAMESE: 'vn',
-            ROMANIAN: 'ro'
+            ROMANIAN: 'ro',
+            PORTUGUESE: 'pt'
         }
     }
 };
