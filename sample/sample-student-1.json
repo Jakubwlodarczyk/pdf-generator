@@ -73,70 +73,70 @@
   "skillSet": [
     {
       "name": "Pair Programming",
-      "type": "0",
+      "type": 0,
       "masteryLevel": "INTERMEDIATE",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "Agile Development",
-      "type": "0",
+      "type": 0,
       "masteryLevel": "INTERMEDIATE",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "Clean Code",
-      "type": "0",
+      "type": 0,
       "masteryLevel": "INTERMEDIATE",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "Transparency",
-      "type": "0",
+      "type": 0,
       "masteryLevel": "EXPERT",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "Reliability",
-      "type": "0",
+      "type": 0,
       "masteryLevel": "EXPERT",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "Java/ Java-Spring Boot",
-      "type": "1",
+      "type": 1,
       "masteryLevel": "INTERMEDIATE",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "Python",
-      "type": "1",
+      "type": 1,
       "masteryLevel": "INTERMEDIATE",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "SQL Databases",
-      "type": "1",
+      "type": 1,
       "masteryLevel": "INTERMEDIATE",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "Git Version Control",
-      "type": "1",
+      "type": 1,
       "masteryLevel": "INTERMEDIATE",
       "description": null,
       "visibleOnPDF": true
     },
     {
       "name": "C#/.NET",
-      "type": "1",
+      "type": 1,
       "masteryLevel": "INTERMEDIATE",
       "description": null,
       "visibleOnPDF": true
@@ -157,14 +157,26 @@
   "spokenLanguages": [
     {
       "languageName": "ENGLISH",
-      "level": "HIGH_INTERMEDIATE",
+      "level": "NATIVE",
       "active": true,
       "visibleOnPDF": true
     },
     {
       "languageName": "ITALIAN",
-      "level": "LOW_INTERMEDIATE",
+      "level": "HIGH_INTERMEDIATE",
       "active": false,
+      "visibleOnPDF": true
+    },
+    {
+      "languageName": "ROMANIAN",
+      "level": "INTERMEDIATE",
+      "active": false,
+      "visibleOnPDF": true
+    },
+    {
+      "languageName": "PORTUGUESE",
+      "level": "ADVANCED",
+      "active": true,
       "visibleOnPDF": true
     }
   ],
