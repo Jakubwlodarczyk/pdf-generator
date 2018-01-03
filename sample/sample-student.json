@@ -1,177 +1,194 @@
 {
-  "personalInfo": {
-    "firstName": "Dóra",
-    "lastName": "Medgyasszayka",
-    "birthDate": "1987-02-18",
-    "gender": "MALE",
-    "email": "email@comeshere.com",
-    "phoneNumber": "+36201234567"
-  },
+  "aboutMe": "Volunteering in Erasmus+ program (4x4);\nTrain and compete with my dog;\nBasic experience in Adobe AI, PS, ID;\n3+ years experience in the pharmaceutical industry;\nI have a B Category Driving licence and I don't smoke :)",
+  "certificates": [],
+  "courseId": "BP.2016.1",
+  "developerPreludes": [],
+  "educations": [
+    {
+      "instituteName": "Codecool",
+      "titleOfQualification": "software developer",
+      "started": "2016",
+      "finished": "2016",
+      "ongoing": false,
+      "academicDegree": false,
+      "visibleOnPDF": true
+    },
+    {
+      "instituteName": "Szent István University",
+      "titleOfQualification": "Faculty of economics and social sciences, andragogy",
+      "started": "2011",
+      "finished": "2015",
+      "ongoing": false,
+      "academicDegree": false,
+      "visibleOnPDF": true
+    }
+  ],
+  "id": 115,
   "location": {
     "country": "Hungary",
     "city": "Budapest",
-    "street": null,
-    "zip": null
+    "street": "Szatmár utca 36/a",
+    "zip": "1142"
   },
-  "spokenLanguages": [
-    {
-      "languageName": "HUNGARIAN",
-      "level": "NATIVE"
-    },
-    {
-      "languageName": "ENGLISH",
-      "level": "ADVANCED"
-    },
-    {
-      "languageName": "GERMAN",
-      "level": "LOW_INTERMEDIATE"
-    }
-  ],
+  "mainInterests": "To create something valuable, programs which help people, which make their life easier. To\novercome of all the challenges that are thrown at me.\n",
   "mentorOpinions": [
     {
-      "opinion": "Peti is a big fan of languages. Not just programming languages, but foreign languages as well. I believe that's why he could learn so much in a year. Fast learner, likes conventions (over configuration :-)).",
+      "opinion": "Tami likes to be best on her field. She has the courage to go further. Hard worker, never gives up a task or a team. Straight, honest, reliable.",
       "mentorSignature": "Tamás Tompa"
     }
   ],
   "peerRecommendations": [
     {
-      "recommendation": "Peter has a good sense of humour and he is very educated. He is a great teammate whose honest and constructive feedbacks I always found very useful.",
-      "peerSignature": "Krisztina Baranyai"
+      "recommendation": "Tami is one of the most precise, disciplined person I know. She is very hardworking and\\ndedicated. She will do great in any field of programming she chooses.\\n",
+      "peerSignature": "Krisztina Baranyai",
+      "visibleOnPDF": true
     }
   ],
-  "educations": [
-    {
-      "instituteName": "Eötvös Loránd University",
-      "titleOfQualification": "BA in Eastern Languages and Cultures (Mongolian & Korean Studies)",
-      "started": null,
-      "finished": null,
-      "ongoing": false,
-      "academicDegree": null
-    },
-    {
-      "instituteName": "National University of Mongolia",
-      "titleOfQualification": "Scholarship Programme for Foreign Students",
-      "started": null,
-      "finished": null,
-      "ongoing": false,
-      "academicDegree": false
-    },
-    {
-      "instituteName": "LIA Iskola",
-      "titleOfQualification": "Protocol Assistant",
-      "started": null,
-      "finished": null,
-      "ongoing": false,
-      "academicDegree": null
-    }
-  ],
-  "certificates": [
-    {
-      "text": "driving licence (category 'B')"
-    }
-  ],
-  "workExperiences": [
-    {
-      "employer": "Nemzeti Művelődési Intézet",
-      "jobTitle": "Administrative Assistant",
-      "started": null,
-      "finished": null,
-      "ongoing": false
-    }
-  ],
+  "personalInfo": {
+    "firstName": "Tamara",
+    "lastName": "Bólya",
+    "birthDate": "1991-01-01",
+    "gender": "FEMALE",
+    "email": "bolyatami@gmail.com",
+    "phoneNumber": "+36303466546"
+  },
+  "profilePicture": "http://profile.code.cool.s3.eu-central-1.amazonaws.com/profile_pictures/115.jpg?1494582301208",
   "projectContributions": [
+    {
+      "projectName": "Codecool shop",
+      "projectRepositoryUrl": "https://github.com/CodecoolBP20161/from-python-to-java-codecool-shop-team2",
+      "projectDescription": "It is a webshop. Stack: Java, Spark, postgreSQL, HTML/CSS/JS\n",
+      "teamMates": null,
+      "visibleOnPDF": true
+    },
     {
       "projectName": "Volunti",
       "projectRepositoryUrl": "https://github.com/CodecoolBP20161/advanced-module-volunti",
-      "projectDescription": "A platform to connect volunteers and organisations.",
-      "teamMates": null
-    },
-    {
-      "projectName": "Microservices for the Codecool Shop practice project",
-      "projectRepositoryUrl": "https://github.com/CodecoolBP20161/from-python-to-java-microservices-peti_balazs_jani_kriszta",
-      "projectDescription": "A cross-webshop review management system.",
-      "teamMates": null
+      "projectDescription": "It is a sustainable fundraising and communication platform connecting volunteers and non-profit organisations. Stack:\nJava Spring Boot, Thymeleaf, React, HTML/CSS, Javascript, JUnit, PostgreSQL",
+      "teamMates": null,
+      "visibleOnPDF": true
     }
   ],
-  "developerPreludes": [],
+  "selfDefinition": "Ten years ago I would have laughed\nif somebody said that I will write\nprograms. Now I become excited\nwhen I can create something with\ntyping a few lines of code. My\nmotivation is to solve issues today\nwhich seemed impossible\nyesterday. I like challenge, I have\ngood problem solving and\norganizing skills. I'm open and\nalways keen on learning new things,\nI'm keen on challenging myself and\nimproving my skills.\n",
   "skillSet": [
     {
-      "name": "Java",
-      "type": "HARD",
+      "name": "Pair Programming",
+      "type": 0,
       "masteryLevel": "INTERMEDIATE",
-      "description": null
+      "description": null,
+      "visibleOnPDF": true
     },
     {
-      "name": "Python",
-      "type": "HARD",
+      "name": "Agile Development",
+      "type": 0,
       "masteryLevel": "INTERMEDIATE",
-      "description": null
-    },
-    {
-      "name": "HTML/CSS",
-      "type": "HARD",
-      "masteryLevel": "INTERMEDIATE",
-      "description": null
-    },
-    {
-      "name": "Java EE",
-      "type": "HARD",
-      "masteryLevel": "INTERMEDIATE",
-      "description": null
-    },
-    {
-      "name": "GIT",
-      "type": "HARD",
-      "masteryLevel": "INTERMEDIATE",
-      "description": null
-    },
-    {
-      "name": "Unit Testing",
-      "type": "SOFT",
-      "masteryLevel": "INTERMEDIATE",
-      "description": null
+      "description": null,
+      "visibleOnPDF": true
     },
     {
       "name": "Clean Code",
-      "type": "SOFT",
+      "type": 0,
       "masteryLevel": "INTERMEDIATE",
-      "description": null
+      "description": null,
+      "visibleOnPDF": true
     },
     {
-      "name": "Teamwork",
-      "type": "SOFT",
+      "name": "Transparency",
+      "type": 0,
       "masteryLevel": "EXPERT",
-      "description": null
+      "description": null,
+      "visibleOnPDF": true
     },
     {
-      "name": "Assertive Communication",
-      "type": "SOFT",
+      "name": "Reliability",
+      "type": 0,
       "masteryLevel": "EXPERT",
-      "description": null
+      "description": null,
+      "visibleOnPDF": true
     },
     {
-      "name": "Helpfulness",
-      "type": "SOFT",
-      "masteryLevel": "EXPERT",
-      "description": null
+      "name": "Java/ Java-Spring Boot",
+      "type": 1,
+      "masteryLevel": "INTERMEDIATE",
+      "description": null,
+      "visibleOnPDF": true
+    },
+    {
+      "name": "Python",
+      "type": 1,
+      "masteryLevel": "INTERMEDIATE",
+      "description": null,
+      "visibleOnPDF": true
+    },
+    {
+      "name": "SQL Databases",
+      "type": 1,
+      "masteryLevel": "INTERMEDIATE",
+      "description": null,
+      "visibleOnPDF": true
+    },
+    {
+      "name": "Git Version Control",
+      "type": 1,
+      "masteryLevel": "INTERMEDIATE",
+      "description": null,
+      "visibleOnPDF": true
+    },
+    {
+      "name": "C#/.NET",
+      "type": 1,
+      "masteryLevel": "INTERMEDIATE",
+      "description": null,
+      "visibleOnPDF": true
     }
   ],
   "socialNetworks": [
     {
-      "title": "LINKEDIN",
-      "url": "https://www.linkedin.com/in/peterpomsar"
+      "title": "GITHUB",
+      "url": "https://github.com/BTamara",
+      "name": "BTamara"
     },
     {
-      "title": "GITHUB",
-      "url": "https://github.com/ppayter-cc"
+      "title": "LINKEDIN",
+      "url": "https://www.linkedin.com/in/tamara-b%C3%B3lya-446785138/",
+      "name": "Tamara Bólya"
     }
   ],
-  "id": 154,
-  "courseId": "BP.2016.1",
-  "profilePicture": "http://profile.code.cool.s3.eu-central-1.amazonaws.com/profile_pictures/154.jpg?1494332729578",
-  "selfDefinition": "Curious, thirsty for knowledge and always eager to improve or learn something new. Culture enthusiast, lover of literature, deeply interested in science, technology and languages.",
-  "willingToWorkElsewhere": false,
-  "preferredItSector": null,
-  "freeTextSkill": "Has experience with IntelliJ, JUnit, Maven, RDBMS, SQL, ORMs, Networking, HTTP, Rest APIs, Heroku.",
-  "mainInterests": "Programming is an awesome way to help people, solve challenging problems and create something new and useful. I prefer the full-stack approach: in order to achieve the best possible solution, one has to understand the whole project from the database through the back-end logic to the UI. Going down this road I would love to master new technologies, learn mobile development and deepen my knowledge in software architecture and UX design."
+  "spokenLanguages": [
+    {
+      "languageName": "ENGLISH",
+      "level": "NATIVE",
+      "active": true,
+      "visibleOnPDF": true
+    },
+    {
+      "languageName": "ITALIAN",
+      "level": "HIGH_INTERMEDIATE",
+      "active": false,
+      "visibleOnPDF": true
+    },
+    {
+      "languageName": "ROMANIAN",
+      "level": "INTERMEDIATE",
+      "active": false,
+      "visibleOnPDF": true
+    },
+    {
+      "languageName": "PORTUGUESE",
+      "level": "ADVANCED",
+      "active": true,
+      "visibleOnPDF": true
+    }
+  ],
+  "willingToWorkElsewhere": 0,
+  "workExperiences": [
+    {
+      "employer": "Abacus Medicine Hungary",
+      "jobTitle": "purchaser",
+      "started": 2012,
+      "finished": 2017,
+      "ongoing": false,
+      "visibleOnPDF": true
+    }
+  ]
 }

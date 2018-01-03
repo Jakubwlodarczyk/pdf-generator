@@ -61,6 +61,7 @@ app.use((req, res, next) => {
 
 let handleProfileRequest = (req, res, justRenderHTML) => {
     let student = req.body;
+    console.log(getCurrentTimeStamp(), " Handling profile request for", student.personalInfo.firstName, student.personalInfo.lastName, student.personalInfo.email);
     student.css = fs.readFileSync(student.printerFriendly ? config.path.css.bw : config.path.css.color, 'utf-8');
     student.softSkills = _.filter(student.skillSet, {type: 0});
     student.hardSkills = _.filter(student.skillSet, {type: 1});
@@ -85,16 +86,21 @@ let handleProfileRequest = (req, res, justRenderHTML) => {
         } else {
             pdf.create(html).toBuffer((err, buffer) => {
                 res.send(buffer);
+                console.log(getCurrentTimeStamp(), " Finished profile request for", student.personalInfo.firstName, student.personalInfo.lastName, student.personalInfo.email);
             });
         }
     });
 };
 
+let getCurrentTimeStamp = () => {
+    let timestamp = new Date(Date.now()).toLocaleString();
+    return "[" + timestamp + "]";
+};
+
 app.post('/', handleProfileRequest);
 
 app.get('/', (req, res) => {
-    req.body = JSON.parse(fs.readFileSync('sample/sample-student-1.json'));
-
+    req.body = JSON.parse(fs.readFileSync('sample/sample-student.json'));
     handleProfileRequest(req, res, true);
 });
 
@@ -166,3 +172,4 @@ let prettifyBirthday = (birthday) => {
 };
 
 app.listen(9005);
+console.log(getCurrentTimeStamp(), ' PDF generator server has been started and listening on port 9005...');

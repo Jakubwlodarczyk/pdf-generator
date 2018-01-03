@@ -51,3 +51,7 @@ To make things simple with AWS Elastic Beanstalk, you're going to need the **[EB
 
 Alternatively:
 - you can run `./curl-elastic-beanstalk.sh` to speed things up
+
+//
+
+curl -X POST http://localhost:9005 -d @sample/sample-student-1.json --header "Content-Type: application/json" > local-generated.pdf
