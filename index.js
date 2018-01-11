@@ -13,12 +13,14 @@ let compileTemplate = (req, res) => {
 
     let emitter = mu.renderText(template, context);
 
+    let options = { 'format' : 'A4'};
+
     emitter.on('data', (data) => {
         compiledTemplate += data.toString();
     });
 
     emitter.on('end', () => {
-        pdf.create(compiledTemplate).toBuffer((err, buffer) => {
+        pdf.create(compiledTemplate, options).toBuffer((err, buffer) => {
             res.send(buffer);
         })
     });
