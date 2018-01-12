@@ -13,7 +13,15 @@ let compileTemplate = (req, res) => {
 
     let emitter = mu.renderText(template, context);
 
-    let options = { 'format' : 'A4'};
+    let options = {
+        'format' : 'A4',
+        "border": {
+            "top": "0.75in",
+            "left": "0.5in",
+            "right": "0.5in",
+            "bottom": "0.75in"
+        },
+    };
 
     emitter.on('data', (data) => {
         compiledTemplate += data.toString();
